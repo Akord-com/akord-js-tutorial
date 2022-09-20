@@ -1,31 +1,21 @@
-import React, { useState } from "react";
 import ViewState from "./ViewState";
 import useForm from "../useForm";
 import validate from "./VaultValidation";
 
-// import { WarpFactory, defaultCacheOptions } from "warp-contracts";
 import CONTRACT from "../contract";
 
 // Test Contract
 // L51SDaFAGZnDAXhAzmEJSrfFPo1R3fyzVDY7aaZFX_M
 
 const VaultWarp = (props) => {
-  const { state, setState } = useState("hello");
-
   const { values, errors, handleChange, handleSubmit } = useForm(
     loadVault,
     validate
   );
-  const [loggedIn, setLoggedIn] = useState(false);
 
   async function loadVault() {
     console.log("GOOD", values);
-    setLoggedIn(true);
-    // props.parentCallback(true);
-    // return <Redirect to="/default" />;
   }
-
-  console.log("State:", state);
 
   return (
     <div>

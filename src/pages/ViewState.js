@@ -1,6 +1,6 @@
-const shortKey = (key) => {
-  return key.slice(0, 6) + "..." + key.slice(-4);
-};
+// const shortKey = (key) => {
+//   return key.slice(0, 6) + "..." + key.slice(-4);
+// };
 
 const ViewState = (props) => {
   if (!props.state) return null;

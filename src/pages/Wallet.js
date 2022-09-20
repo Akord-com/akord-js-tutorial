@@ -1,40 +1,50 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import useForm from "../useForm";
 import validate from "./LoginValidation";
-// import { signIn, currentUser } from "../helpers.js";
 import Akord from "@akord/akord-js";
+import { useContext } from "react";
+import { Context } from "../store";
 
 const COGNITO_LOCAL_STORAGE =
   "CognitoIdentityServiceProvider.7u2a1pf5i6shfo7enci6bagk7u.LastAuthUser";
 
 const Wallet = (props) => {
-  const [user, setUser] = useState(null);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [state, dispatch] = useContext(Context);
   const { values, errors, handleChange, handleSubmit } = useForm(
     login,
     validate
   );
 
   async function login() {
-    setLoggedIn(true);
-    // const user = await signIn(values.email, values.password);
-    setUser(user);
+    const akord = await Akord.signIn(values.email, values.password);
+    const user = {
+      email: values.email,
+      wallet: akord.service.wallet,
+      jwtToken: akord.api.jwtToken,
+    };
+    dispatch({ type: "USER_LOGIN", payload: user });
   }
 
   async function logout() {
     localStorage.removeItem(COGNITO_LOCAL_STORAGE);
-    setUser(null);
-    setLoggedIn(false);
   }
 
   async function getUser() {
     // Update the document title using the browser API
-    if (!user) {
-      // console.log(`loading current user...`);
-      // const user = await currentUser();
-      // if (user) {
-      //   setUser(user);
-      // }
+    if (state.current_user) {
+      const akord = await Akord.init(
+        {},
+        state.current_user.wallet,
+        state.current_user.jwtToken
+      );
+
+      const user = {
+        email: values.email,
+        wallet: akord.service.wallet,
+        jwtToken: akord.api.jwtToken,
+      };
+
+      console.log(user);
     }
   }
 
@@ -42,28 +52,19 @@ const Wallet = (props) => {
     getUser();
   });
 
-  if (user) {
+  if (state.current_user) {
     return (
       <div className="row">
         <div className="col">
-          <h3>User wallet for {user.attributes.email}</h3>
+          <h3>User wallet for {state.current_user.email}</h3>
           <p>
             <button className="btn btn-danger" onClick={logout}>
               Logout
             </button>
           </p>
-          <h5 className="mt-5">User Attributes</h5>
-          <ul className="list-group">
-            {Object.keys(user.attributes).map((a, i) => (
-              <li className="list-group-item" key={i}>
-                <h6>{a}</h6>
-                <pre>{user.attributes[a]}</pre>
-              </li>
-            ))}
-          </ul>
           <h5 className="mt-5">Raw User Object:</h5>
           <pre className="small" lines={10}>
-            {JSON.stringify(user, null, 2)}
+            {JSON.stringify(state.current_user, null, 2)}
           </pre>
         </div>
       </div>

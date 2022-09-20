@@ -9,7 +9,11 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.0",
-    "react-scripts": "5.0.1"
+    "react-scripts": "4.0.3"
+  },
+  "browser": {
+    "crypto": false,
+    "constants": false
   },
   "scripts": {
     "start": "react-scripts start",
@@ -23,9 +27,6 @@
       "react-app/jest"
     ]
   },
-  "browser": {
-    "constants": false
-  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -37,5 +38,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-error-overlay": "6.0.9"
   }
 }
