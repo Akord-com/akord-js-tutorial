@@ -4,8 +4,10 @@ import Store from "./store";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import Wallet from "./pages/Wallet";
-import VaultWarp from "./pages/VaultWarp";
+import Dairy from "./pages/Diary";
 import Vaults from "./pages/Vaults";
+import VaultView from "./pages/VaultView";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
@@ -17,9 +19,10 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<Home />} />
-              <Route path="login" element={<Wallet />} />
+              <Route path="wallet" element={<Wallet />} />
               <Route path="vaults" element={<Vaults />} />
-              <Route path="vault-warp" element={<VaultWarp />} />
+              <Route path="vaults/:vaultId" element={<VaultView />} />
+              <Route path="diary" element={<Dairy />} />
               <Route path="*" element={<p>No Page</p>} />
             </Route>
           </Routes>

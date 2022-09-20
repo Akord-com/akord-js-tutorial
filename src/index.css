@@ -1,6 +1,12 @@
 pre {
-    color: #424242;
-    background-color: #ebebee;
+    color: #ebebee;
+    background-color: #424242;
     margin: 1rem 0 !important;
     padding: 1rem;
+    border-radius: 5px;
   }
+
+hr {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}

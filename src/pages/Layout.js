@@ -4,9 +4,9 @@ import { Context } from "../store";
 
 const LINKS = [
   ["Home", "/"],
-  ["Wallet", "/login"],
+  ["Wallet", "/wallet"],
   ["Vaults", "/vaults"],
-  ["Vault: Warp Contracts", "/vault-warp"],
+  ["Diary", "/diary"],
 ];
 
 const Layout = () => {
@@ -15,7 +15,7 @@ const Layout = () => {
   return (
     <div className="container">
       <div className="navbar py-3 my-3">
-        <a className="navbar-brand h2" href={"#"}>
+        <a className="navbar-brand h2" href={"/#"}>
           Akord Vault Viewer
         </a>
       </div>

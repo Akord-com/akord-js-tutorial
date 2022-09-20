@@ -5,15 +5,15 @@ import Akord from "@akord/akord-js";
 import { useContext } from "react";
 import { Context } from "../store";
 
-const Vaults = (props) => {
+const VaultView = (props) => {
   const params = useParams();
   const [state] = useContext(Context);
-  const [vaults, setVaults] = useState([]);
   const [vault, setVault] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  async function loadData() {
+  async function loadVault(vaultId) {
     // Update the document title using the browser API
+    console.log("loadVault");
     if (state.current_user) {
       setIsLoading(true);
       const akord = await Akord.init(
@@ -21,48 +21,34 @@ const Vaults = (props) => {
         state.current_user.wallet,
         state.current_user.jwtToken
       );
-      const vaults = await akord.getVaults();
-      setVaults(vaults);
+      const folders = await akord.getNodes(vaultId, "folder");
+      const stacks = await akord.getNodes(vaultId, "stack");
+      setVault({
+        folders,
+        stacks,
+      });
     }
     setIsLoading(false);
   }
 
   useEffect(() => {
-    loadData();
+    loadVault(params.vaultId);
   }, []);
 
   console.log(params);
-
   return (
     <div>
-      <h1>Vaults</h1>
-      <p>Access your public or private vaults.</p>
+      <h1>Vault Contents</h1>
+      <p>Access memberships and nodes from your vault.</p>
       <pre>
         {"const akord = await Akord.signIn(username, password);"}
         <br />
         {"const vaults = await akord.getVaults();"}
       </pre>
 
-      {isLoading && <div className="spinner-border"></div>}
-
-      {!state.current_user && (
-        <p>
-          <a href="/wallet">Login with your wallet</a> to view your vaults.
-        </p>
-      )}
-
-      {vaults.map((v, i) => (
-        <div className="card my-3" key={i}>
-          <div className="card-body">
-            <h3 className="card-title">
-              <Link to={`/vaults/${v.id}`}>{v.name}</Link>
-            </h3>
-            <pre>{JSON.stringify(v, null, 2)}</pre>
-          </div>
-        </div>
-      ))}
+      <pre>{JSON.stringify(vault, null, 2)}</pre>
     </div>
   );
 };
 
-export default Vaults;
+export default VaultView;

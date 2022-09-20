@@ -7,7 +7,7 @@ import CONTRACT from "../contract";
 // Test Contract
 // L51SDaFAGZnDAXhAzmEJSrfFPo1R3fyzVDY7aaZFX_M
 
-const VaultWarp = (props) => {
+const Dairy = (props) => {
   const { values, errors, handleChange, handleSubmit } = useForm(
     loadVault,
     validate
@@ -56,4 +56,4 @@ const VaultWarp = (props) => {
   );
 };
 
-export default VaultWarp;
+export default Dairy;

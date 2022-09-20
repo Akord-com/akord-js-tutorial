@@ -52,67 +52,84 @@ const Wallet = (props) => {
     getUser();
   });
 
-  if (state.current_user) {
-    return (
-      <div className="row">
-        <div className="col">
-          <h3>User wallet for {state.current_user.email}</h3>
-          <p>
-            <button className="btn btn-danger" onClick={logout}>
-              Logout
-            </button>
-          </p>
-          <h5 className="mt-5">Raw User Object:</h5>
-          <pre className="small" lines={10}>
-            {JSON.stringify(state.current_user, null, 2)}
-          </pre>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div>
-      {/* {loggedIn && <Redirect to="/default" />} */}
-      <h3>Login to your Akord Wallet</h3>
-      <form onSubmit={handleSubmit} noValidate>
-        <div className="field">
-          <label className="label">Password</label>
-          <div className="control">
-            <input
-              autoComplete="off"
-              className={`form-control ${errors.email && "is-danger"}`}
-              type="email"
-              name="email"
-              onChange={handleChange}
-              value={values.email || ""}
-              required
-            />
-            {errors.email && (
-              <p className="py-1 my-1 alert alert-danger">{errors.email}</p>
-            )}
+      <h1>Wallets</h1>
+      <p>Access your encrypted wallet for use in dApp.</p>
+      <pre>
+        {"const akord = await Akord.signIn(username, password);"}
+        <br />
+        <br />
+        {"console.log(akord.api.jwtToken);"}
+        <br />
+        {"console.log(akord.service.wallet);"}
+      </pre>
+      <hr></hr>
+      {state.current_user && (
+        <div className="card">
+          <div className="card-body">
+            <h3>Wallet owned by {state.current_user.email}</h3>
+            <p>
+              <button className="btn btn-danger" onClick={logout}>
+                Logout
+              </button>
+            </p>
+            <h5>JWT Token:</h5>
+            <pre>{state.current_user.jwtToken}</pre>
+            <h5 className="mt-5">Wallet Object:</h5>
+            <pre className="small" lines={10}>
+              {JSON.stringify(state.current_user.wallet, null, 2)}
+            </pre>
           </div>
         </div>
-        <div className="field">
-          <label className="label">Password</label>
-          <div className="control">
-            <input
-              className={`form-control ${errors.password && "is-danger"}`}
-              type="password"
-              name="password"
-              onChange={handleChange}
-              value={values.password || ""}
-              required
-            />
-          </div>
-          {errors.password && (
-            <p className="py-1 my-1 alert alert-danger">{errors.password}</p>
-          )}
+      )}
+
+      {!state.current_user && (
+        <div>
+          {/* {loggedIn && <Redirect to="/default" />} */}
+          <h3>Login to your Akord Wallet</h3>
+          <form onSubmit={handleSubmit} noValidate>
+            <div className="field">
+              <label className="label">Password</label>
+              <div className="control">
+                <input
+                  autoComplete="off"
+                  className={`form-control ${errors.email && "is-danger"}`}
+                  type="email"
+                  name="email"
+                  onChange={handleChange}
+                  value={values.email || ""}
+                  required
+                />
+                {errors.email && (
+                  <p className="py-1 my-1 alert alert-danger">{errors.email}</p>
+                )}
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Password</label>
+              <div className="control">
+                <input
+                  className={`form-control ${errors.password && "is-danger"}`}
+                  type="password"
+                  name="password"
+                  onChange={handleChange}
+                  value={values.password || ""}
+                  required
+                />
+              </div>
+              {errors.password && (
+                <p className="py-1 my-1 alert alert-danger">
+                  {errors.password}
+                </p>
+              )}
+            </div>
+            <button type="submit" className="btn btn-primary btn-lg my-3">
+              Login
+            </button>
+          </form>
         </div>
-        <button type="submit" className="btn btn-primary btn-lg my-3">
-          Login
-        </button>
-      </form>
+      )}
     </div>
   );
 };
