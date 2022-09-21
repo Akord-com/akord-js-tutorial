@@ -4,7 +4,7 @@ export const initialState = {
 };
 
 export const Reducer = (state, action) => {
-  console.log(state, action);
+  // console.log(state, action);
   switch (action.type) {
     case "INIT":
       return initialState;

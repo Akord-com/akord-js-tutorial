@@ -34,26 +34,27 @@ const Wallet = (props) => {
     dispatch({ type: "USER_LOGOUT" });
   }
 
-  async function getUser() {
-    // Update the document title using the browser API
-    if (state.current_user) {
-      const akord = await Akord.init(
-        {},
-        state.current_user.wallet,
-        state.current_user.jwtToken
-      );
 
-      const user = {
-        email: values.email,
-        wallet: akord.service.wallet,
-        jwtToken: akord.api.jwtToken,
-      };
-
-      console.log(user);
-    }
-  }
 
   useEffect(() => {
+    async function getUser() {
+      // Update the document title using the browser API
+      if (state.current_user) {
+        const akord = await Akord.init(
+          {},
+          state.current_user.wallet,
+          state.current_user.jwtToken
+        );
+
+        const user = {
+          email: values.email,
+          wallet: akord.service.wallet,
+          jwtToken: akord.api.jwtToken,
+        };
+
+        console.log(user);
+      }
+    }
     getUser();
   }, []);
 

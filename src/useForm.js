@@ -12,14 +12,14 @@ const useForm = (callback, validate) => {
   }, [errors]);
 
   const handleSubmit = (event) => {
-    console.log("useForm:handleSubmit");
+    // console.log("useForm:handleSubmit");
     if (event) event.preventDefault();
     setErrors(validate(values));
     setIsSubmitting(true);
   };
 
   const handleChange = (event) => {
-    console.log("useForm:handleChange");
+    // console.log("useForm:handleChange");
     event.persist();
     setValues((values) => ({
       ...values,
