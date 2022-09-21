@@ -96,7 +96,7 @@ const Wallet = (props) => {
           <h3>Login to your Akord Wallet</h3>
           <form onSubmit={handleSubmit} noValidate>
             <div className="field">
-              <label className="label">Password</label>
+              <label className="label">Email</label>
               <div className="control">
                 <input
                   autoComplete="off"
