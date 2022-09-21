@@ -11,10 +11,6 @@
     "react-router-dom": "^6.4.0",
     "react-scripts": "4.0.3"
   },
-  "browser": {
-    "crypto": false,
-    "constants": false
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -29,9 +25,11 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "chrome >= 67",
+      "edge >= 79",
+      "firefox >= 68",
+      "opera >= 54",
+      "safari >= 14"
     ],
     "development": [
       "last 1 chrome version",

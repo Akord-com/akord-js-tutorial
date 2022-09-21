@@ -17,6 +17,8 @@ const Dairy = (props) => {
     console.log("GOOD", values);
   }
 
+  return <p>Working on it</p>;
+
   return (
     <div>
       {/* {loggedIn && <Redirect to="/default" />} */}

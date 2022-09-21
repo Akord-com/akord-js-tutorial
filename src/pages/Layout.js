@@ -28,7 +28,7 @@ const Layout = () => {
             <ul className="nav flex-column">
               {LINKS.map((l, i) => (
                 <li className="nav-item" key={i}>
-                  <Link to={l[1]} className="nav-link">
+                  <Link to={l[1]} className="nav-link ">
                     {l[0]}
                   </Link>
                 </li>

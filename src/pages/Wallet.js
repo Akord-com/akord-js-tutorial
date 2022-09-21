@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import useForm from "../useForm";
 import validate from "./LoginValidation";
 import Akord from "@akord/akord-js";
@@ -10,23 +10,28 @@ const COGNITO_LOCAL_STORAGE =
 
 const Wallet = (props) => {
   const [state, dispatch] = useContext(Context);
+  const [isLoading, setIsLoading] = useState(false);
   const { values, errors, handleChange, handleSubmit } = useForm(
     login,
     validate
   );
 
   async function login() {
+    setIsLoading(true);
     const akord = await Akord.signIn(values.email, values.password);
     const user = {
       email: values.email,
       wallet: akord.service.wallet,
       jwtToken: akord.api.jwtToken,
     };
+    setIsLoading(false);
     dispatch({ type: "USER_LOGIN", payload: user });
   }
 
   async function logout() {
     localStorage.removeItem(COGNITO_LOCAL_STORAGE);
+    setIsLoading(false);
+    dispatch({ type: "USER_LOGOUT" });
   }
 
   async function getUser() {
@@ -50,7 +55,7 @@ const Wallet = (props) => {
 
   useEffect(() => {
     getUser();
-  });
+  }, []);
 
   return (
     <div>
@@ -124,9 +129,21 @@ const Wallet = (props) => {
                 </p>
               )}
             </div>
-            <button type="submit" className="btn btn-primary btn-lg my-3">
-              Login
-            </button>
+            {!isLoading && (
+              <button type="submit" className="btn btn-primary btn-lg my-3">
+                Login
+              </button>
+            )}
+            {isLoading && (
+              <button
+                className="btn btn-primary btn-lg my-3"
+                type="button"
+                disabled
+              >
+                <span className="spinner-border spinner-border-sm"></span>
+                &nbsp;Login
+              </button>
+            )}
           </form>
         </div>
       )}

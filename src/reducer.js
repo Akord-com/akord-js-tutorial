@@ -14,6 +14,12 @@ export const Reducer = (state, action) => {
         state: "WALLET",
         current_user: action.payload,
       };
+    case "USER_LOGOUT":
+      return {
+        ...state,
+        state: "DEFAULT",
+        current_user: null,
+      };
     default:
       return state;
   }
