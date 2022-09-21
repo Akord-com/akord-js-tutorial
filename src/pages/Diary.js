@@ -1,3 +1,8 @@
+import React, { useState, useEffect } from "react";
+import Akord from "@akord/akord-js";
+import { useContext } from "react";
+import { Context } from "../store";
+
 // import ViewState from "./ViewState";
 // import useForm from "../useForm";
 // import validate from "./VaultValidation";
@@ -7,7 +12,13 @@
 // Test Contract
 // L51SDaFAGZnDAXhAzmEJSrfFPo1R3fyzVDY7aaZFX_M
 
+const VAULT_TITLE = "My Vault Diary";
+
 const Dairy = (props) => {
+  const [vaultId, setVaultId] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [state] = useContext(Context);
+
   // const { values, errors, handleChange, handleSubmit } = useForm(
   //   loadVault,
   //   validate
@@ -17,7 +28,55 @@ const Dairy = (props) => {
   //   console.log("GOOD", values);
   // }
 
-  return <p>Working on it</p>;
+  async function findDiaryVault() {
+    // Update the document title using the browser API
+    if (state.current_user) {
+      setIsLoading(true);
+      const akord = await Akord.init(
+        {},
+        state.current_user.wallet,
+        state.current_user.jwtToken
+      );
+      const vaults = await akord.getVaults();
+      console.log(vaults)
+
+    }
+    setIsLoading(false);
+  }
+
+  useEffect(() => {
+    findDiaryVault();
+  }, []);
+
+  return (
+    <div>
+      <h1>Diary</h1>
+      <p className="lead">Post and read from your encrypted, user owned Vault Diary.</p>
+      <p>Create a new vault for the diary</p>
+      <pre>
+        {`const akord = await Akord.signIn(username, password);`}
+        <br />
+        {`const { vaultId } = await akord.vaultCreate("Vault Diary");`}
+      </pre>
+
+      <p>Post a new entry to the Diary</p>
+      <pre>
+        {`const akord = await Akord.signIn(username, password);`}
+        <br />
+        {`const note = await akord.noteCreate(vaultId, name, content);`}
+      </pre>
+
+      {!state.current_user && (
+        <p>
+          <a href="/wallet">Login with your wallet</a> to access your Vault Diary.
+        </p>
+      )}
+
+
+    </div>
+
+
+  )
 
   // return (
   //   <div>
