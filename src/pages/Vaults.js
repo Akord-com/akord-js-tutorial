@@ -31,8 +31,6 @@ const Vaults = (props) => {
     loadData();
   }, []);
 
-  console.log(params);
-
   return (
     <div>
       <h1>Vaults</h1>
