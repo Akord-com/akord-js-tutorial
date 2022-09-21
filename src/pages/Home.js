@@ -1,12 +1,17 @@
 const Home = () => {
   return (
     <div className="">
-      <h1 className="card-title">Akord-JS Tutorial</h1>
+      <h1 className="card-title mb-3">Akord-JS Tutorial</h1>
       <p>
         Akord Vaults are private, permaneant and composable storage units for
         web3 environments. They give the user control of their data, allowing
         them to choose which apps and/or people have access.
       </p>
+      <img
+        src="/images/user-owned-storage.png"
+        className="float-end m-3"
+        style={{ maxHeight: "20em" }}
+      />
       <p>
         Vaults provide the means for users to own their own data, for them to
         consent to who can see/access their data and portability of thier data

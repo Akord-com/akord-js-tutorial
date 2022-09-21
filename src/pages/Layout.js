@@ -6,7 +6,7 @@ const LINKS = [
   ["Home", "/"],
   ["Wallet", "/wallet"],
   ["Vaults", "/vaults"],
-  ["Diary", "/diary"],
+  ["Permadiary", "/permadiary"],
 ];
 
 const Layout = () => {
@@ -15,15 +15,13 @@ const Layout = () => {
   return (
     <div className="container">
       <div className="navbar py-3 my-3">
-        <a className="navbar-brand h2" href={"/#"}>
-          Akord Vault Viewer
+        <a className="navbar-brand h2" href={"/"}>
+          AkordJS Tutorial
         </a>
+        {state.current_user && <p>{state.current_user.email}</p>}
       </div>
       <div className="row mb-5 pb-5">
         <div className="col-4">
-          {state.current_user && (
-            <h5>Logged in as {state.current_user.email}</h5>
-          )}
           <nav>
             <ul className="nav flex-column">
               {LINKS.map((l, i) => (

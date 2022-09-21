@@ -34,8 +34,6 @@ const Wallet = (props) => {
     dispatch({ type: "USER_LOGOUT" });
   }
 
-
-
   useEffect(() => {
     async function getUser() {
       // Update the document title using the browser API
@@ -61,16 +59,25 @@ const Wallet = (props) => {
   return (
     <div>
       <h1>Wallets</h1>
-      <p>Access your encrypted wallet for use in dApp.</p>
+      <p>
+        Users hold their private keys in their 'wallet'. Wallets are encrypted
+        with the user's password and is shared across the user's devices.
+      </p>
+      <p>We can use the signIn call from Akord :</p>
       <pre>
-        {"const akord = await Akord.signIn(username, password);"}
+        {"const akord = await Akord.signIn(email, pass);"}
         <br />
         <br />
         {"console.log(akord.api.jwtToken);"}
         <br />
         {"console.log(akord.service.wallet);"}
       </pre>
-      <hr></hr>
+      <p>
+        If successfull, we get back an `akord` object from which we can access
+        the jwtToken and Wallet, both useful for making API calls and decrypting
+        data.
+      </p>
+
       {state.current_user && (
         <div className="card">
           <div className="card-body">
@@ -94,9 +101,13 @@ const Wallet = (props) => {
         <div>
           {/* {loggedIn && <Redirect to="/default" />} */}
           <h3>Login to your Akord Wallet</h3>
+          <p>
+            Sign up for a free wallet at{" "}
+            <a href="http://v2.akord.com">v2.akord.com</a>
+          </p>
           <form onSubmit={handleSubmit} noValidate>
             <div className="field">
-              <label className="label">Email</label>
+              <label className="label my-2">Email</label>
               <div className="control">
                 <input
                   autoComplete="off"
@@ -113,7 +124,7 @@ const Wallet = (props) => {
               </div>
             </div>
             <div className="field">
-              <label className="label">Password</label>
+              <label className="label my-2">Password</label>
               <div className="control">
                 <input
                   className={`form-control ${errors.password && "is-danger"}`}

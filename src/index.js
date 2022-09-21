@@ -22,7 +22,7 @@ export default function App() {
               <Route path="wallet" element={<Wallet />} />
               <Route path="vaults" element={<Vaults />} />
               <Route path="vaults/:vaultId" element={<VaultView />} />
-              <Route path="diary" element={<Dairy />} />
+              <Route path="permadiary" element={<Dairy />} />
               <Route path="*" element={<p>No Page</p>} />
             </Route>
           </Routes>

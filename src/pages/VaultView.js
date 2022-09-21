@@ -8,7 +8,7 @@ import { Context } from "../store";
 const VaultView = (props) => {
   const params = useParams();
   const [state] = useContext(Context);
-  const [imageUrls, setImagesUrls] = useState([])
+  const [imageUrls, setImagesUrls] = useState([]);
   const [vault, setVault] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -20,16 +20,14 @@ const VaultView = (props) => {
         if (stack.id) {
           var file = await akord.getStackFile(stack.id);
           var url = URL.createObjectURL(new Blob([file]));
-          setImagesUrls(current => [...current, url]);
+          setImagesUrls((current) => [...current, url]);
         }
       } catch (error) {
         console.log("Status:", error.response.status);
         console.log("Data:", error.response.data);
       }
     }
-  }
-
-
+  };
 
   const loadVault = async (vaultId) => {
     // Update the document title using the browser API
@@ -43,14 +41,16 @@ const VaultView = (props) => {
       );
       const folders = await akord.getNodes(vaultId, "folder");
       const stacks = await akord.getNodes(vaultId, "stack");
+      const notes = await akord.getNodes(vaultId, "note");
       setVault({
         folders,
         stacks,
+        notes,
       });
-      downloadImages(stacks, akord)
+      downloadImages(stacks, akord);
     }
     setIsLoading(false);
-  }
+  };
 
   useEffect(() => {
     loadVault(params.vaultId);
@@ -61,14 +61,24 @@ const VaultView = (props) => {
       <h1>Vault Contents</h1>
       <p>Access memberships and nodes from your vault.</p>
       <pre>
-        {"const akord = await Akord.signIn(username, password);"}
+        {`const akord = await Akord.signIn(username, password);`}
         <br />
-        {"const vaults = await akord.getVaults();"}
+        <br />
+        {`const folders = await akord.getNodes(vaultId, "folder");`}
+        <br />
+        {`const stacks = await akord.getNodes(vaultId, "stack");`}
+        <br />
+        {`const memos = await akord.getNodes(vaultId, "memo");`}
       </pre>
       {isLoading && <p>Loading...</p>}
 
       {imageUrls.map((url, i) => (
-        <img src={url} className="img-thumbnail m-1 border-0" key={i} style={{ maxHeight: '8rem' }} />
+        <img
+          src={url}
+          className="img-thumbnail m-1 border-0"
+          key={i}
+          style={{ maxHeight: "8rem" }}
+        />
       ))}
 
       <pre>{JSON.stringify(imageUrls, null, 2)}</pre>

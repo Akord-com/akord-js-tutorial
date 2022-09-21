@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@akord/akord-js@^0.3.53":
-  version "0.3.53"
-  resolved "https://registry.yarnpkg.com/@akord/akord-js/-/akord-js-0.3.53.tgz#e11a3c994c6047840de73879308424e985822b14"
-  integrity sha512-miTrNAZFz5Twj37KrT27/lzB4Fia/uTKBQPYrW+PFUsasb9EEyy6vUn2sl3iSu2DEoaNpP5pN9rcFJnmmW8luA==
+"@akord/akord-js@^0.3.54":
+  version "0.3.54"
+  resolved "https://registry.yarnpkg.com/@akord/akord-js/-/akord-js-0.3.54.tgz#4a6ee9d864b2ed6d4581f37825800ae6a508a65e"
+  integrity sha512-iyaimkrpAebwGSwgF7DCOrthYdhdGSpItsAm0tAOprIdSAHlWJM2bBuAzjULJ/O0Nleegb9RjxLhyFr/81o+VQ==
   dependencies:
     "@akord/crypto" "0.0.43"
     amazon-cognito-identity-js "^5.2.8"
@@ -6658,9 +6658,9 @@ faye-websocket@^0.11.3, faye-websocket@^0.11.4:
     websocket-driver ">=0.5.1"
 
 fb-watchman@^2.0.0:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/fb-watchman/-/fb-watchman-2.0.1.tgz#fc84fb39d2709cf3ff6d743706157bb5708a8a85"
-  integrity sha512-DkPJKQeY6kKwmuMretBhr7G6Vodr7bFwDYTXIkfG1gjvNpaxBTQV3PbXg6bR1c1UP4jPOX0jHUbbHANL9vRjVg==
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/fb-watchman/-/fb-watchman-2.0.2.tgz#e9524ee6b5c77e9e5001af0f85f3adbb8623255c"
+  integrity sha512-p5161BqbuCaSnB8jIbzQHOlpgsPmK5rJVDfDKO91Axs5NC1uu3HRQm6wt9cd9/+GtQQIO53JdGXXoyDpTAsgYA==
   dependencies:
     bser "2.1.1"
 
