@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@akord/akord-js": "^0.3.50",
+    "@akord/akord-js": "^0.3.53",
     "@craco/craco": "^6.4.5",
     "bootstrap": "^5.2.1",
     "eslint-config-react-app": "^7.0.1",
