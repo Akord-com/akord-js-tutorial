@@ -10,7 +10,7 @@ const Home = () => {
       <img
         src="/images/user-owned-storage.png"
         className="float-end m-3"
-        style={{ maxHeight: "20em" }}
+        style={{ maxHeight: "25em" }}
       />
       <p>
         Vaults provide the means for users to own their own data, for them to

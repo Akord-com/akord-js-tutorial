@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Akord from "@akord/akord-js";
 import { useContext } from "react";
@@ -11,8 +10,10 @@ const VaultView = (props) => {
   const [imageUrls, setImagesUrls] = useState([]);
   const [vault, setVault] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [downloadingGallery, setDownloadingGallery] = useState(false);
 
   const downloadImages = async (stacks, akord) => {
+    setDownloadingGallery(true);
     for (var i in stacks) {
       var stack = stacks[i];
       console.log("downloading...", stack);
@@ -27,6 +28,7 @@ const VaultView = (props) => {
         console.log("Data:", error.response.data);
       }
     }
+    setDownloadingGallery(false);
   };
 
   const loadVault = async (vaultId) => {
@@ -61,7 +63,7 @@ const VaultView = (props) => {
       <h1>Vault Contents</h1>
       <p>Access memberships and nodes from your vault.</p>
       <pre>
-        {`const akord = await Akord.signIn(username, password);`}
+        {`var file = await akord.getStackFile(stack.id);`}
         <br />
         <br />
         {`const folders = await akord.getNodes(vaultId, "folder");`}
@@ -72,6 +74,23 @@ const VaultView = (props) => {
       </pre>
       {isLoading && <p>Loading...</p>}
 
+      {imageUrls.length > 0 && (
+        <div>
+          <h3>BLOB Links to your decrypted files</h3>
+          <p>
+            For private vaults, all data is encrypted/decrypted on the client.
+            Here, we download the images and make them available as BLOB urls.
+          </p>
+          <pre>
+            {`const akord = await Akord.signIn(username, password);`}
+            <br />
+            {`var url = URL.createObjectURL(new Blob([file]));`}
+            <br />
+            <br />
+            {`<img src={url} />`}
+          </pre>
+        </div>
+      )}
       {imageUrls.map((url, i) => (
         <img
           src={url}
@@ -80,9 +99,18 @@ const VaultView = (props) => {
           style={{ maxHeight: "8rem" }}
         />
       ))}
-
+      {downloadingGallery && <div className="spinner-border"></div>}
       <pre>{JSON.stringify(imageUrls, null, 2)}</pre>
-      <pre>{JSON.stringify(vault, null, 2)}</pre>
+      {vault && (
+        <div>
+          <h3>Your vault's contents</h3>
+          <p>
+            Here we are constructing a JSON object that contains the folders,
+            stacks, etc from the vault.
+          </p>
+          <pre>{JSON.stringify(vault, null, 2)}</pre>
+        </div>
+      )}
     </div>
   );
 };

@@ -30,7 +30,7 @@ const Vaults = (props) => {
   return (
     <div>
       <h1>Vaults</h1>
-      <p>Access your public or private vaults.</p>
+      <p>Akord enables 'User Owned Storage' as composable web3 vaults. </p>
       <pre>
         {"const akord = await Akord.signIn(username, password);"}
         <br />
