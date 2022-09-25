@@ -1,22 +1,52 @@
 const Home = () => {
   return (
     <div className="">
-      <h1 className="card-title mb-3">Akord-JS Tutorial</h1>
+      <h1 className="card-title mb-3">Akord-js Tutorial</h1>
       <p>
-        Akord Vaults are private, permaneant and composable storage units for
-        web3 environments. They give the user control of their data, allowing
-        them to choose which apps and/or people have access.
+        This tutorial is designed to introduce Akord Vaults, a solution for user
+        owned storaged.
+      </p>
+      <h3>What is user owned storage?</h3>
+      <p>
+        Akord Vaults are private, permanent and composable storage units for
+        web3, SaaS and enterprise environments. They give the user control of
+        their data, by allowing them to choose which apps and/or people have
+        access. Access control is managed by decentralized protocols and
+        cryptography.
       </p>
       <img
         src="/images/user-owned-storage.png"
         className="float-end m-3"
         style={{ maxHeight: "25em" }}
       />
+      <ul>
+        <li>
+          <b>Private</b> by design. AkordJS handles all end to end encryption,
+          while making sure data is encrypted during tranmission, processing and
+          storage.
+        </li>
+        <li>
+          <b>Permanence</b> by blockchain. Arweave provides a pay up front model
+          for storage. Akord Protocol, all data and all logic is verified on
+          Arweave.
+        </li>
+        <li>
+          <b>Composable</b> by protocol. The Akord Protocol arranges how members
+          can save, exchange and process private data. The protocol is designed
+          for developers to extend.
+        </li>
+      </ul>
       <p>
         Vaults provide the means for users to own their own data, for them to
-        consent to who can see/access their data and portability of thier data
-        outside of the applications that use it.
+        have the right to consent of that data and portability outside of the
+        applications that use it.
       </p>
+      <p>
+        In the web3 paradigm, vaults are owned by the user and dApps
+        (decentralized applications) request permission to access it, in the
+        same way they do for interacting with blockchain transactions.
+      </p>
+      <h3>Akord-Js and React</h3>
       <p>
         In this React app, we'll cover the basics for how to create, contribute
         to and access an Akord Vault.

@@ -81,7 +81,8 @@ const Wallet = (props) => {
       {state.current_user && (
         <div className="card">
           <div className="card-body">
-            <h3>Wallet owned by {state.current_user.email}</h3>
+            <h4>Akord Wallet</h4>
+            <pre>{state.current_user.email}</pre>
             <p>
               <button className="btn btn-danger" onClick={logout}>
                 Logout
@@ -89,7 +90,7 @@ const Wallet = (props) => {
             </p>
             <h5>JWT Token:</h5>
             <pre>{state.current_user.jwtToken}</pre>
-            <h5 className="mt-5">Wallet Object:</h5>
+            <h5>Wallet Object:</h5>
             <pre className="small" lines={10}>
               {JSON.stringify(state.current_user.wallet, null, 2)}
             </pre>
@@ -103,7 +104,9 @@ const Wallet = (props) => {
           <h3>Login to your Akord Wallet</h3>
           <p>
             Sign up for a free wallet at{" "}
-            <a href="http://v2.akord.com">v2.akord.com</a>
+            <a href="http://v2.akord.com" target="_blank">
+              v2.akord.com
+            </a>
           </p>
           <form onSubmit={handleSubmit} noValidate>
             <div className="field">
@@ -156,6 +159,14 @@ const Wallet = (props) => {
                 &nbsp;Login
               </button>
             )}
+            <div className="alert alert-danger">
+              <h3>Attention: You are decrypting your wallet</h3>
+              <p>
+                After logging in, your wallet will be decrypted an its contents
+                will be presented on the next screen. Please take precautions to
+                protect your wallet.
+              </p>
+            </div>
           </form>
         </div>
       )}
