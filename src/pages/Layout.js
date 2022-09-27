@@ -6,15 +6,15 @@ const LINKS = [
   ["Home", "/"],
   ["Wallet", "/wallet"],
   ["Vaults", "/vaults"],
-  ["Permadiary", "/permadiary"],
+  ["PermaDiary", "/permadiary"]
 ];
 
 const Layout = () => {
   const [state] = useContext(Context);
 
   return (
-    <main className="d-flex flex-nowrap ">
-      <h1 className="visually-hidden">AkordJS Tutorial</h1>
+    <main className="d-flex flex-nowrap">
+      <h1 className="visually-hidden">Akord-JS Tutorial</h1>
       <div
         className="d-flex flex-column flex-shrink-0 text-white bg-dark p-3 d-none d-md-block"
         id="navbarToggle"
@@ -22,7 +22,7 @@ const Layout = () => {
       >
         <a href="/" className="d-block text-decoration-none">
           {/* <svg className="bi me-2" width="40" height="32"></svg> */}
-          <h3 className="text-light">AkordJS Tutorial</h3>
+          <h3 className="text-light">Akord-JS Tutorial</h3>
         </a>
         {state.current_user && (
           <p className="d-block">{state.current_user.email}</p>
@@ -31,10 +31,14 @@ const Layout = () => {
         <GitHubLink />
       </div>
 
-      <div className="d-block flex-column scrollarea p-3">
+      <div
+        className="d-block flex-column scrollarea p-3"
+        style={{ width: "100%" }}
+      >
         <MobileLinks />
-
-        <Outlet />
+        <div className="col-12 col-md-7" style={{ margin: "0 auto" }}>
+          <Outlet />
+        </div>
       </div>
     </main>
   );
@@ -61,11 +65,11 @@ const NavLinks = () => {
 const MobileLinks = () => {
   const location = useLocation();
   return (
-    <>
+    <div className="d-md-none">
       <a href="/" className="d-block text-decoration-none">
-        <h3 className="text-dark">AkordJS Tutorial</h3>
+        <h3 className="text-dark">Akord-JS Tutorial</h3>
       </a>
-      <ul className="nav nav-pills flex-column mb-auto bg-light p-3 rounded d-md-none">
+      <ul className="nav nav-pills flex-column mb-auto bg-light p-3 rounded">
         {LINKS.map((l, i) => (
           <li className="nav-item" key={i}>
             <Link
@@ -80,7 +84,7 @@ const MobileLinks = () => {
         ))}
       </ul>
       <hr />
-    </>
+    </div>
   );
 };
 

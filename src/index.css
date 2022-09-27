@@ -1,32 +1,28 @@
 * {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 body {
   min-height: 100vh;
-  min-height: -webkit-fill-available;
 }
 
 html {
-  height: -webkit-fill-available;
+  height: 100vh;
 }
 
 main {
   height: 100vh;
-  height: -webkit-fill-available;
-  max-height: 100vh;
   overflow-x: auto;
   overflow-y: hidden;
 }
 
-
 pre {
-    color: #ebebee;
-    background-color: #424242;
-    margin: 1rem 0 !important;
-    padding: 1rem;
-    border-radius: 5px;
-  }
+  color: #ebebee;
+  background-color: #424242;
+  margin: 1rem 0 !important;
+  padding: 1rem;
+  border-radius: 5px;
+}
 
 h3 {
   text-transform: uppercase;
@@ -42,26 +38,32 @@ hr {
 }
 
 a {
-  color: #F26D43;
+  color: #f26d43;
 }
 
 a:hover {
   color: #f73f08;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-  background-color: #F26D43;
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background-color: #f26d43;
 }
 
-.nav-link  {
-  color: #FFFFFF;
+.nav-link {
+  color: #ffffff;
 }
 
 .nav-link:hover {
   background-color: #393939;
-  color: #FFFFFF;
-} 
+  color: #ffffff;
+}
 
 .scrollarea {
   overflow-y: auto;
+}
+
+.btn {
+  background-color: #f26d43 !important;
+  border-color: #f26d43 !important;
 }

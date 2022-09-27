@@ -4,7 +4,7 @@ import Akord from "@akord/akord-js";
 import { useContext } from "react";
 import { Context } from "../store";
 
-const VaultView = (props) => {
+const VaultView = props => {
   const params = useParams();
   const [state] = useContext(Context);
   const [imageUrls, setImagesUrls] = useState([]);
@@ -14,14 +14,14 @@ const VaultView = (props) => {
 
   const downloadImages = async (stacks, akord) => {
     setDownloadingGallery(true);
-    for (var i in stacks) {
-      var stack = stacks[i];
+    for (let i in stacks) {
+      const stack = stacks[i];
       console.log("downloading...", stack);
       try {
         if (stack.id) {
-          var file = await akord.getStackFile(stack.id);
-          var url = URL.createObjectURL(new Blob([file]));
-          setImagesUrls((current) => [...current, url]);
+          const file = await akord.getStackFile(stack.id);
+          const fileUrl = URL.createObjectURL(new Blob([file]));
+          setImagesUrls(current => [...current, fileUrl]);
         }
       } catch (error) {
         console.log("Status:", error.response.status);
@@ -31,35 +31,34 @@ const VaultView = (props) => {
     setDownloadingGallery(false);
   };
 
-  const loadVault = async (vaultId) => {
-    // Update the document title using the browser API
-
-    if (state.current_user) {
-      setIsLoading(true);
-      const akord = await Akord.init(
-        {},
-        state.current_user.wallet,
-        state.current_user.jwtToken
-      );
-      const folders = await akord.getNodes(vaultId, "folder");
-      const stacks = await akord.getNodes(vaultId, "stack");
-      const notes = await akord.getNodes(vaultId, "note");
-      setVault({
-        folders,
-        stacks,
-        notes,
-      });
-      downloadImages(stacks, akord);
-    }
-    setIsLoading(false);
-  };
-
   useEffect(() => {
+    const loadVault = async vaultId => {
+      // Update the document title using the browser API
+
+      if (state.current_user) {
+        setIsLoading(true);
+        const akord = await Akord.init(
+          {},
+          state.current_user.wallet,
+          state.current_user.jwtToken
+        );
+        const folders = await akord.getNodes(vaultId, "folder");
+        const stacks = await akord.getNodes(vaultId, "stack");
+        const notes = await akord.getNodes(vaultId, "note");
+        setVault({
+          folders,
+          stacks,
+          notes
+        });
+        downloadImages(stacks, akord);
+      }
+      setIsLoading(false);
+    };
     loadVault(params.vaultId);
-  }, []);
+  }, [state, params]);
 
   return (
-    <div>
+    <>
       <h1>Vault Contents</h1>
       <p>Access memberships and nodes from your vault.</p>
       <pre>
@@ -97,6 +96,7 @@ const VaultView = (props) => {
           className="img-thumbnail m-1 border-0"
           key={i}
           style={{ maxHeight: "8rem" }}
+          alt="vault thumbnail"
         />
       ))}
       {downloadingGallery && <div className="spinner-border"></div>}
@@ -111,7 +111,7 @@ const VaultView = (props) => {
           <pre>{JSON.stringify(vault, null, 2)}</pre>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
