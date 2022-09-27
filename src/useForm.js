@@ -1,29 +1,21 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const useForm = (callback, validate) => {
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  useEffect(() => {
-    if (Object.keys(errors).length === 0 && isSubmitting) {
-      callback();
-    }
-  }, [errors]);
-
-  const handleSubmit = (event) => {
-    // console.log("useForm:handleSubmit");
+  const handleSubmit = async event => {
     if (event) event.preventDefault();
     setErrors(validate(values));
-    setIsSubmitting(true);
+    await callback();
+    setValues({});
   };
 
-  const handleChange = (event) => {
-    // console.log("useForm:handleChange");
+  const handleChange = event => {
     event.persist();
-    setValues((values) => ({
+    setValues(values => ({
       ...values,
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value
     }));
   };
 
@@ -31,7 +23,7 @@ const useForm = (callback, validate) => {
     handleChange,
     handleSubmit,
     values,
-    errors,
+    errors
   };
 };
 

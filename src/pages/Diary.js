@@ -6,7 +6,7 @@ import useForm from "../useForm";
 
 const VAULT_TITLE = "My Vault Diary";
 
-const Dairy = (props) => {
+const Dairy = props => {
   const [vaultId, setVaultId] = useState(null);
   const [note, setNote] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -53,37 +53,36 @@ const Dairy = (props) => {
     setIsLoading(false);
   };
 
-  async function findDiaryVault() {
-    // Update the document title using the browser API
-    if (state.current_user) {
-      setIsLoading(true);
-      const akord = await Akord.init(
-        {},
-        state.current_user.wallet,
-        state.current_user.jwtToken
-      );
-      const vaults = await akord.getVaults();
-      const vault = vaults.filter((v) => v.name === VAULT_TITLE);
-      if (vault.length === 0) {
-        setVaultId(null);
-        setCreatePrompt(true);
-      } else {
-        setVaultId(vault[0].id);
-        setCreatePrompt(false);
-      }
-
-      console.log(vault);
-    }
-    setIsLoading(false);
-  }
-
   useEffect(() => {
+    async function findDiaryVault() {
+      // Update the document title using the browser API
+      if (state.current_user) {
+        setIsLoading(true);
+        const akord = await Akord.init(
+          {},
+          state.current_user.wallet,
+          state.current_user.jwtToken
+        );
+        const vaults = await akord.getVaults();
+        const vault = vaults.filter(v => v.name === VAULT_TITLE);
+        if (vault.length === 0) {
+          setVaultId(null);
+          setCreatePrompt(true);
+        } else {
+          setVaultId(vault[0].id);
+          setCreatePrompt(false);
+        }
+
+        // console.log(vault);
+      }
+      setIsLoading(false);
+    }
     findDiaryVault();
-  }, []);
+  }, [state]);
 
   return (
     <div>
-      <h1>Permadiary</h1>
+      <h1>PermaDiary</h1>
       <p className="lead">
         Post and read from your encrypted, user owned vault.
       </p>
@@ -179,8 +178,12 @@ const Dairy = (props) => {
               )}
             </div>
           </div>
-          <button type="submit" className="btn btn-primary btn-lg my-3">
-            Submit to the Vault
+          <button
+            type="submit"
+            className="btn btn-primary btn-lg my-3"
+            disabled={!values.content}
+          >
+            Save to the Vault
           </button>
         </form>
       )}

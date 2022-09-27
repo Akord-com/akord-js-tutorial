@@ -8,7 +8,7 @@ import { Context } from "../store";
 const COGNITO_LOCAL_STORAGE =
   "CognitoIdentityServiceProvider.7u2a1pf5i6shfo7enci6bagk7u.LastAuthUser";
 
-const Wallet = (props) => {
+const Wallet = props => {
   const [state, dispatch] = useContext(Context);
   const [isLoading, setIsLoading] = useState(false);
   const { values, errors, handleChange, handleSubmit } = useForm(
@@ -22,7 +22,7 @@ const Wallet = (props) => {
     const user = {
       email: values.email,
       wallet: akord.service.wallet,
-      jwtToken: akord.api.jwtToken,
+      jwtToken: akord.api.jwtToken
     };
     setIsLoading(false);
     dispatch({ type: "USER_LOGIN", payload: user });
@@ -47,14 +47,14 @@ const Wallet = (props) => {
         const user = {
           email: values.email,
           wallet: akord.service.wallet,
-          jwtToken: akord.api.jwtToken,
+          jwtToken: akord.api.jwtToken
         };
 
         console.log(user);
       }
     }
     getUser();
-  }, []);
+  }, [state, values]);
 
   return (
     <div>
@@ -104,7 +104,7 @@ const Wallet = (props) => {
           <h3>Login to your Akord Wallet</h3>
           <p>
             Sign up for a free wallet at{" "}
-            <a href="http://v2.akord.com" target="_blank">
+            <a href="http://v2.akord.com" target="_blank" rel="noreferrer">
               v2.akord.com
             </a>
           </p>
@@ -145,7 +145,11 @@ const Wallet = (props) => {
               )}
             </div>
             {!isLoading && (
-              <button type="submit" className="btn btn-primary btn-lg my-3">
+              <button
+                type="submit"
+                className="btn btn-primary btn-lg my-3"
+                disabled={!values.password || !values.email}
+              >
                 Login
               </button>
             )}

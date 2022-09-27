@@ -4,7 +4,7 @@ import Akord from "@akord/akord-js";
 import { useContext } from "react";
 import { Context } from "../store";
 
-const Vaults = (props) => {
+const Vaults = props => {
   const [state] = useContext(Context);
   const [vaults, setVaults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -25,7 +25,7 @@ const Vaults = (props) => {
       setIsLoading(false);
     }
     loadData();
-  }, []);
+  }, [state]);
 
   return (
     <div>
