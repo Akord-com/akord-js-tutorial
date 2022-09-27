@@ -1,6 +1,6 @@
 const Home = () => {
   return (
-    <div>
+    <>
       <h1 className="card-title mb-3">Akord-js Tutorial</h1>
       <p>
         This tutorial is designed to introduce Akord Vaults, a solution for user
@@ -97,7 +97,7 @@ const Home = () => {
           <br />
         </pre>
       </div>
-    </div>
+    </>
   );
 };
 

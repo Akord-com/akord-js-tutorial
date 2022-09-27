@@ -57,7 +57,7 @@ const Wallet = props => {
   }, [state, values]);
 
   return (
-    <div>
+    <>
       <h1>Wallets</h1>
       <p>
         Users hold their private keys in their 'wallet'. Wallets are encrypted
@@ -174,7 +174,7 @@ const Wallet = props => {
           </form>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

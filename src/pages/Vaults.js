@@ -28,7 +28,7 @@ const Vaults = props => {
   }, [state]);
 
   return (
-    <div>
+    <>
       <h1>Vaults</h1>
       <p>Akord enables 'User Owned Storage' as composable web3 vaults. </p>
       <pre>
@@ -55,7 +55,7 @@ const Vaults = props => {
           </div>
         </div>
       ))}
-    </div>
+    </>
   );
 };
 

@@ -58,7 +58,7 @@ const VaultView = props => {
   }, [state, params]);
 
   return (
-    <div>
+    <>
       <h1>Vault Contents</h1>
       <p>Access memberships and nodes from your vault.</p>
       <pre>
@@ -111,7 +111,7 @@ const VaultView = props => {
           <pre>{JSON.stringify(vault, null, 2)}</pre>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

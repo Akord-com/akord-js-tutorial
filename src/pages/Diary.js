@@ -81,7 +81,7 @@ const Dairy = props => {
   }, [state]);
 
   return (
-    <div>
+    <>
       <h1>PermaDiary</h1>
       <p className="lead">
         Post and read from your encrypted, user owned vault.
@@ -194,7 +194,7 @@ const Dairy = props => {
           <pre>{JSON.stringify(note, null, 2)}</pre>
         </div>
       )}
-    </div>
+    </>
   );
 
   // return (

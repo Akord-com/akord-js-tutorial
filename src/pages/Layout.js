@@ -33,11 +33,12 @@ const Layout = () => {
 
       <div
         className="d-block flex-column scrollarea p-3"
-        style={{ width: "800px", margin: "0 auto" }}
+        style={{ width: "100%" }}
       >
         <MobileLinks />
-
-        <Outlet />
+        <div style={{ width: "800px", margin: "0 auto" }}>
+          <Outlet />
+        </div>
       </div>
     </main>
   );
