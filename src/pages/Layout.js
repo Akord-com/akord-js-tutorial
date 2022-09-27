@@ -36,7 +36,7 @@ const Layout = () => {
         style={{ width: "100%" }}
       >
         <MobileLinks />
-        <div style={{ width: "800px", margin: "0 auto" }}>
+        <div className="col-12 col-md-7" style={{ margin: "0 auto" }}>
           <Outlet />
         </div>
       </div>
