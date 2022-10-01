@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@akord/akord-js@^0.3.54":
-  version "0.3.54"
-  resolved "https://registry.yarnpkg.com/@akord/akord-js/-/akord-js-0.3.54.tgz#4a6ee9d864b2ed6d4581f37825800ae6a508a65e"
-  integrity sha512-iyaimkrpAebwGSwgF7DCOrthYdhdGSpItsAm0tAOprIdSAHlWJM2bBuAzjULJ/O0Nleegb9RjxLhyFr/81o+VQ==
+"@akord/akord-js@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@akord/akord-js/-/akord-js-1.2.0.tgz#bb4e3878b5d59eaaf436f251885bb8ec0a60628b"
+  integrity sha512-mQ3TIKwohFrU3QuGWXAKf/3lxpyD2uSr7EFH7A2GqcjA4/755yjrdZ3kir3uWAUonbUW6Bgn1pQQxosvzPkHjg==
   dependencies:
     "@akord/crypto" "0.0.43"
     amazon-cognito-identity-js "^5.2.8"
@@ -20,6 +20,8 @@
     lodash "^4.17.21"
     mime-types "^2.1.35"
     pdfjs-dist "^2.16.105"
+    rxjs "^7.5.6"
+    ts-cacheable "^1.0.6"
     uuid "^8.3.2"
     warp-contracts "1.2.4"
 
@@ -11681,6 +11683,13 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
+rxjs@^7.5.6:
+  version "7.5.7"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.5.7.tgz#2ec0d57fdc89ece220d2e702730ae8f1e49def39"
+  integrity sha512-z9MzKh/UcOqB3i20H6rtrlaE/CgjLOvheWK/9ILrbhROGTweAi1BaFsTT9FbwZi5Trr1qNRs+MXkhmR06awzQA==
+  dependencies:
+    tslib "^2.1.0"
+
 safe-buffer@5.1.2, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
@@ -12754,6 +12763,13 @@ tryer@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/tryer/-/tryer-1.0.1.tgz#f2c85406800b9b0f74c9f7465b81eaad241252f8"
   integrity sha512-c3zayb8/kWWpycWYg87P71E1S1ZL6b6IJxfb5fvsUgsf0S2MVGaDhDXXjDMpdCpfWXqptc+4mXwmiy1ypXqRAA==
+
+ts-cacheable@^1.0.6:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/ts-cacheable/-/ts-cacheable-1.0.7.tgz#7eb5c3404e285369801b55dda2d1a44cb282345c"
+  integrity sha512-4pJC2/tDZlIXzhrfCoKIMMgM1D1f1Pf+87FH+RN0HeV4RrArANGX/iBcJGZ8LRY/P7Nbzb60VL5u2O1iWwldng==
+  dependencies:
+    rxjs "^7.5.6"
 
 ts-invariant@^0.4.0:
   version "0.4.4"
