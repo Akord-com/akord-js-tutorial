@@ -86,7 +86,7 @@ const VaultView = (props) => {
         {`const memos = await akord.getNodes(vaultId, "memo");`}
       </pre>
       {isLoading && <div className="spinner-border"></div>}
-      <p>Uploading and downloading from a stack:</p>
+      <p>Upload to and download from a stack:</p>
       <pre>
         {
           "const { stackId } = await akord.stack.create(vaultId, file, 'my first file stack');"
@@ -94,25 +94,24 @@ const VaultView = (props) => {
         <br />
         {"const decryptedFile = await akord.getStackFile(stackId);"}
       </pre>
-      <hr></hr>
-      <h3>Displaying Images</h3>
-      {imageUrls.length > 0 && (
-        <div>
-          <p>
-            For private vaults, all data is encrypted/decrypted on the client.
-            Here, we download the images and make them available as BLOB urls.
-          </p>
-          <pre>
-            {`const { data: file } = await akord.getStackFile(stack.id);`}
-            <br />
-            {`var url = URL.createObjectURL(new Blob([file]));`}
-            <br />
-            <br />
-            {`<img src={url} />`}
-          </pre>
-        </div>
-      )}
-      {downloadingGallery && <div className="spinner-border"></div>}
+
+      <h3 className="mt-5">Displaying Images</h3>
+      <div>
+        <p>
+          For private vaults, all data is encrypted/decrypted on the client.
+          Akord-js handles encryption so can download the images and make them
+          available as BLOB urls.
+        </p>
+        <pre>
+          {`const { data: file } = await akord.getStackFile(stack.id);`}
+          <br />
+          {`var url = URL.createObjectURL(new Blob([file]));`}
+          <br />
+          <br />
+          {`<img src={url} />`}
+        </pre>
+      </div>
+
       {imageUrls.map((url, i) => (
         <img
           src={url}
@@ -122,9 +121,10 @@ const VaultView = (props) => {
           alt="vault thumbnail"
         />
       ))}
-      <hr />
+      {downloadingGallery && <div className="spinner-border"></div>}
+
       {vault && vault.stacks.length > 0 && (
-        <div>
+        <div className="my-5">
           <h3>Your Stacks</h3>
           <table className="table table-sm">
             <tbody>
@@ -167,9 +167,9 @@ const VaultView = (props) => {
           </table>
         </div>
       )}
-      <hr />
+
       {vault && (
-        <div className="">
+        <div className="my-5">
           <h3>Your vault's contents</h3>
           <p>
             Here we are constructing a JSON object that contains the folders,
