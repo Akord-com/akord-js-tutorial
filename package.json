@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@akord/akord-js": "^0.3.54",
+    "@akord/akord-js": "^1.2.0",
     "@craco/craco": "^6.4.5",
     "bootstrap": "^5.2.1",
     "eslint-config-react-app": "^7.0.1",
@@ -16,7 +16,8 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "clean": "rm -rf node_modules yarn-error.log yarn.lock"
   },
   "eslintConfig": {
     "extends": [

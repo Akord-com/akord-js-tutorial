@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Akord from "@akord/akord-js";
+import { Akord } from "@akord/akord-js";
 import { useContext } from "react";
 import { Context } from "../store";
 import useForm from "../useForm";
@@ -22,13 +22,12 @@ const Dairy = props => {
     setIsLoading(true);
     if (state.current_user && vaultId) {
       const akord = await Akord.init(
-        {},
         state.current_user.wallet,
         state.current_user.jwtToken
       );
       // give it a name, sortable by the date it was posted, then title
       const name = `${new Date(Date.now()).toISOString()} ${values.title}`;
-      const note = await akord.noteCreate(vaultId, name, values.content);
+      const note = await akord.note.create(vaultId, name, values.content);
       console.log(note);
       setNote(note);
     }
@@ -39,11 +38,10 @@ const Dairy = props => {
     setIsLoading(true);
     if (state.current_user) {
       const akord = await Akord.init(
-        {},
         state.current_user.wallet,
         state.current_user.jwtToken
       );
-      const vault = await akord.vaultCreate(
+      const vault = await akord.vault.create(
         VAULT_TITLE //+ " " + Date.now().toString()
       );
       setVaultId(vault.vaultId);
@@ -59,7 +57,6 @@ const Dairy = props => {
       if (state.current_user) {
         setIsLoading(true);
         const akord = await Akord.init(
-          {},
           state.current_user.wallet,
           state.current_user.jwtToken
         );
@@ -92,22 +89,22 @@ const Dairy = props => {
         markdown format.
       </p>
       <pre>
-        {`const akord = await Akord.signIn(username, password);`}
+        {`const { akord } = await Akord.auth.signIn(username, password);`}
         <br />
-        {`const { vaultId } = await akord.vaultCreate("Vault Diary");`}
+        {`const { vaultId } = await akord.vault.create("Vault Diary");`}
       </pre>
       <p>
         Then we can write some markdown and post it as an entry to the Diary
       </p>
       <pre>
-        {`const akord = await Akord.signIn(username, password);`}
+        {`const { akord } = await Akord.auth.signIn(username, password);`}
         <br />
         {`const name = nameOfThePost;`}
         <br />
         {`const content = '# Hello World, from Akord';`}
         <br />
         <br />
-        {`const note = await akord.noteCreate(vaultId, 'Hello World', content);`}
+        {`const note = await akord.note.create(vaultId, 'Hello World', content);`}
       </pre>
 
       {!state.current_user && (

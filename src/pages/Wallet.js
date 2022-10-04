@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useForm from "../useForm";
 import validate from "./LoginValidation";
-import Akord from "@akord/akord-js";
+import { Akord } from "@akord/akord-js";
 import { useContext } from "react";
 import { Context } from "../store";
 
@@ -18,11 +18,11 @@ const Wallet = props => {
 
   async function login() {
     setIsLoading(true);
-    const akord = await Akord.signIn(values.email, values.password);
+    const { jwtToken, wallet } = await Akord.auth.signIn(values.email, values.password);
     const user = {
       email: values.email,
-      wallet: akord.service.wallet,
-      jwtToken: akord.api.jwtToken
+      wallet: wallet,
+      jwtToken: jwtToken
     };
     setIsLoading(false);
     dispatch({ type: "USER_LOGIN", payload: user });
@@ -38,16 +38,15 @@ const Wallet = props => {
     async function getUser() {
       // Update the document title using the browser API
       if (state.current_user) {
-        const akord = await Akord.init(
-          {},
+        const { jwtToken, wallet } = await Akord.init(
           state.current_user.wallet,
           state.current_user.jwtToken
         );
 
         const user = {
           email: values.email,
-          wallet: akord.service.wallet,
-          jwtToken: akord.api.jwtToken
+          wallet: wallet,
+          jwtToken: jwtToken
         };
 
         console.log(user);
@@ -65,15 +64,15 @@ const Wallet = props => {
       </p>
       <p>We can use the signIn call from Akord :</p>
       <pre>
-        {"const akord = await Akord.signIn(email, pass);"}
+        {"const { akord, jwtToken, wallet } = await Akord.auth.signIn(email, pass);"}
         <br />
         <br />
-        {"console.log(akord.api.jwtToken);"}
+        {"console.log(jwtToken);"}
         <br />
-        {"console.log(akord.service.wallet);"}
+        {"console.log(wallet);"}
       </pre>
       <p>
-        If successfull, we get back an `akord` object from which we can access
+        If successfull, we get back an `akord` instance along with
         the jwtToken and Wallet, both useful for making API calls and decrypting
         data.
       </p>

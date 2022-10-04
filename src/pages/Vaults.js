@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Akord from "@akord/akord-js";
+import { Akord } from "@akord/akord-js";
 import { useContext } from "react";
 import { Context } from "../store";
 
@@ -15,7 +15,6 @@ const Vaults = props => {
       if (state.current_user) {
         setIsLoading(true);
         const akord = await Akord.init(
-          {},
           state.current_user.wallet,
           state.current_user.jwtToken
         );
@@ -32,7 +31,7 @@ const Vaults = props => {
       <h1>Vaults</h1>
       <p>Akord enables 'User Owned Storage' as composable web3 vaults. </p>
       <pre>
-        {"const akord = await Akord.signIn(username, password);"}
+        {"const { akord } = await Akord.auth.signIn(username, password);"}
         <br />
         {"const vaults = await akord.getVaults();"}
       </pre>

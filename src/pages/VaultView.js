@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Akord from "@akord/akord-js";
+import { Akord } from "@akord/akord-js";
 import { useContext } from "react";
 import { Context } from "../store";
 
@@ -38,7 +38,6 @@ const VaultView = props => {
       if (state.current_user) {
         setIsLoading(true);
         const akord = await Akord.init(
-          {},
           state.current_user.wallet,
           state.current_user.jwtToken
         );
@@ -81,7 +80,7 @@ const VaultView = props => {
             Here, we download the images and make them available as BLOB urls.
           </p>
           <pre>
-            {`const akord = await Akord.signIn(username, password);`}
+            {`const { akord } = await Akord.auth.signIn(username, password);`}
             <br />
             {`var url = URL.createObjectURL(new Blob([file]));`}
             <br />
