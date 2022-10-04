@@ -19,7 +19,7 @@ const VaultView = props => {
       console.log("downloading...", stack);
       try {
         if (stack.id) {
-          const file = await akord.getStackFile(stack.id);
+          const { data: file } = await akord.getStackFile(stack.id);
           const fileUrl = URL.createObjectURL(new Blob([file]));
           setImagesUrls(current => [...current, fileUrl]);
         }
@@ -61,7 +61,7 @@ const VaultView = props => {
       <h1>Vault Contents</h1>
       <p>Access memberships and nodes from your vault.</p>
       <pre>
-        {`var file = await akord.getStackFile(stack.id);`}
+        {`const { data: file, name } = await akord.getStackFile(stack.id);`}
         <br />
         <br />
         {`const folders = await akord.getNodes(vaultId, "folder");`}
