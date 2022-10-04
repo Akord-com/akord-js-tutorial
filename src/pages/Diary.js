@@ -6,7 +6,7 @@ import useForm from "../useForm";
 
 const VAULT_TITLE = "My Vault Diary";
 
-const Dairy = props => {
+const Dairy = (props) => {
   const [vaultId, setVaultId] = useState(null);
   const [note, setNote] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -61,7 +61,7 @@ const Dairy = props => {
           state.current_user.jwtToken
         );
         const vaults = await akord.getVaults();
-        const vault = vaults.filter(v => v.name === VAULT_TITLE);
+        const vault = vaults.filter((v) => v.name === VAULT_TITLE);
         if (vault.length === 0) {
           setVaultId(null);
           setCreatePrompt(true);
@@ -106,7 +106,11 @@ const Dairy = props => {
         <br />
         {`const note = await akord.note.create(vaultId, 'Hello World', content);`}
       </pre>
-
+      <p>
+        For your own personal, private and permanent diary, we'll first check
+        for a vault called '{VAULT_TITLE}', create one if not found and post
+        diary entries to it.{" "}
+      </p>
       {!state.current_user && (
         <p>
           <a href="/wallet">Login with your wallet</a> to access your Vault

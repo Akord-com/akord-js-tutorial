@@ -4,7 +4,7 @@ import { Akord } from "@akord/akord-js";
 import { useContext } from "react";
 import { Context } from "../store";
 
-const Vaults = props => {
+const Vaults = (props) => {
   const [state] = useContext(Context);
   const [vaults, setVaults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -29,7 +29,11 @@ const Vaults = props => {
   return (
     <>
       <h1>Vaults</h1>
-      <p>Akord enables 'User Owned Storage' as composable web3 vaults. </p>
+      <p>
+        Akord stores your data in private, permanent and composable, user owned
+        storage units called 'Vaults'.
+      </p>
+
       <pre>
         {"const { akord } = await Akord.auth.signIn(username, password);"}
         <br />
@@ -42,18 +46,28 @@ const Vaults = props => {
         </p>
       )}
 
-      {isLoading && <div className="spinner-border"></div>}
+      {state.current_user && (
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Vault Id</th>
+              <th>Vault Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            {vaults.map((v, i) => (
+              <tr key={i}>
+                <td>
+                  <Link to={`/vaults/${v.id}`}>{v.id}</Link>
+                </td>
+                <td>{v.name}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
 
-      {vaults.map((v, i) => (
-        <div className="card my-3" key={i}>
-          <div className="card-body">
-            <h3 className="card-title">
-              <Link to={`/vaults/${v.id}`}>{v.name}</Link>
-            </h3>
-            <pre>{JSON.stringify(v, null, 2)}</pre>
-          </div>
-        </div>
-      ))}
+      {isLoading && <div className="spinner-border"></div>}
     </>
   );
 };
