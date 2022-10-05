@@ -8,7 +8,7 @@ import { Context } from "../store";
 const COGNITO_LOCAL_STORAGE =
   "CognitoIdentityServiceProvider.7u2a1pf5i6shfo7enci6bagk7u.LastAuthUser";
 
-const Wallet = props => {
+const Wallet = (props) => {
   const [state, dispatch] = useContext(Context);
   const [isLoading, setIsLoading] = useState(false);
   const { values, errors, handleChange, handleSubmit } = useForm(
@@ -18,11 +18,14 @@ const Wallet = props => {
 
   async function login() {
     setIsLoading(true);
-    const { jwtToken, wallet } = await Akord.auth.signIn(values.email, values.password);
+    const { jwtToken, wallet } = await Akord.auth.signIn(
+      values.email,
+      values.password
+    );
     const user = {
       email: values.email,
       wallet: wallet,
-      jwtToken: jwtToken
+      jwtToken: jwtToken,
     };
     setIsLoading(false);
     dispatch({ type: "USER_LOGIN", payload: user });
@@ -46,7 +49,7 @@ const Wallet = props => {
         const user = {
           email: values.email,
           wallet: wallet,
-          jwtToken: jwtToken
+          jwtToken: jwtToken,
         };
 
         console.log(user);
@@ -64,7 +67,9 @@ const Wallet = props => {
       </p>
       <p>We can use the signIn call from Akord :</p>
       <pre>
-        {"const { akord, jwtToken, wallet } = await Akord.auth.signIn(email, pass);"}
+        {
+          "const { akord, jwtToken, wallet } = await Akord.auth.signIn(email, pass);"
+        }
         <br />
         <br />
         {"console.log(jwtToken);"}
@@ -72,28 +77,25 @@ const Wallet = props => {
         {"console.log(wallet);"}
       </pre>
       <p>
-        If successfull, we get back an `akord` instance along with
-        the jwtToken and Wallet, both useful for making API calls and decrypting
-        data.
+        If successfull, we get back an `akord` instance along with the jwtToken
+        and Wallet, both useful for making API calls and decrypting data.
       </p>
 
       {state.current_user && (
-        <div className="card">
-          <div className="card-body">
-            <h4>Akord Wallet</h4>
-            <pre>{state.current_user.email}</pre>
-            <p>
-              <button className="btn btn-danger" onClick={logout}>
-                Logout
-              </button>
-            </p>
-            <h5>JWT Token:</h5>
-            <pre>{state.current_user.jwtToken}</pre>
-            <h5>Wallet Object:</h5>
-            <pre className="small" lines={10}>
-              {JSON.stringify(state.current_user.wallet, null, 2)}
-            </pre>
-          </div>
+        <div>
+          <h4>Akord Wallet</h4>
+          <pre>{state.current_user.email}</pre>
+          <p>
+            <button className="btn btn-danger" onClick={logout}>
+              Logout
+            </button>
+          </p>
+          <h5>JWT Token:</h5>
+          <pre>{state.current_user.jwtToken}</pre>
+          <h5>Wallet Object:</h5>
+          <pre className="small" lines={10}>
+            {JSON.stringify(state.current_user.wallet, null, 2)}
+          </pre>
         </div>
       )}
 
@@ -113,7 +115,9 @@ const Wallet = props => {
               <div className="control">
                 <input
                   autoComplete="off"
-                  className={`form-control ${errors.email && "is-danger"}`}
+                  className={`form-control border border-warning ${
+                    errors.email && "is-danger"
+                  }`}
                   type="email"
                   name="email"
                   onChange={handleChange}

@@ -14,12 +14,14 @@ const Home = () => {
         access. Access control is managed by decentralized protocols and
         cryptography.
       </p>
-      <img
-        src="/images/user-owned-storage.png"
-        className="float-end m-3"
-        style={{ maxHeight: "25em" }}
-        alt="data flow chart"
-      />
+      <p>
+        <img
+          src="/images/user-owned-storage.png"
+          className=""
+          style={{ width: "100%", maxWidth: "1024px" }}
+          alt="data flow chart"
+        />
+      </p>
       <ul>
         <li>
           <b>Private</b> by design. AkordJS handles all end to end encryption,
@@ -77,8 +79,8 @@ const Home = () => {
         </li>
       </ul>
       <pre>npm install @akord/akord-js warp-contracts</pre>
-      <div className="alert alert-warning">
-        <h5>NOTE: Using akord-js with React</h5>
+      <div className="alert highlight">
+        <h2>NOTE: Using akord-js with React</h2>
         <p>
           Using @akord/akord-js requires libraries that may trigger an error
           related to not finding the 'crypto' or 'constrants' modules.

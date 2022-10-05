@@ -16,7 +16,7 @@ const Layout = () => {
     <main className="d-flex flex-nowrap">
       <h1 className="visually-hidden">Akord-JS Tutorial</h1>
       <div
-        className="d-flex flex-column flex-shrink-0 text-white bg-dark p-3 d-none d-md-block"
+        className="d-flex flex-column flex-shrink-0 text-white sidebar p-3 d-none d-md-block"
         id="navbarToggle"
         style={{ width: "280px" }}
       >
@@ -67,15 +67,15 @@ const MobileLinks = () => {
   return (
     <div className="d-md-none">
       <a href="/" className="d-block text-decoration-none">
-        <h3 className="text-dark">Akord-JS Tutorial</h3>
+        <h3>Akord-JS Tutorial</h3>
       </a>
-      <ul className="nav nav-pills flex-column mb-auto bg-light p-3 rounded">
+      <ul className="nav nav-pills flex-column mb-auto p-3 rounded">
         {LINKS.map((l, i) => (
           <li className="nav-item" key={i}>
             <Link
               to={l[1]}
               className={`nav-link ${
-                location.pathname === l[1] ? "active" : "text-dark"
+                location.pathname === l[1] ? "active" : ""
               }`}
             >
               {l[0]}
