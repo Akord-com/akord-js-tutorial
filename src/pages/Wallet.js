@@ -63,8 +63,9 @@ const Wallet = (props) => {
     <>
       <h1>Wallets</h1>
       <p>
-        Akord Wallets are used to access the user's keys. The wallet is secured
-        by a 'recovery phrase' and accessible via a username and password.
+        Akord Wallets are used to store and access the user's keys across
+        devices. The wallet is secured by a 'recovery phrase' and accessible via
+        a username and password.
       </p>
 
       <p>Access the wallet using akord-js:</p>
@@ -148,7 +149,6 @@ const Wallet = (props) => {
                 </p>
               )}
             </div>
-
             <SpinnerButton
               title="Login"
               loading={isLoading}

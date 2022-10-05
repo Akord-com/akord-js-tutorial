@@ -18,7 +18,8 @@ const Vaults = (props) => {
           state.current_user.wallet,
           state.current_user.jwtToken
         );
-        const vaults = await akord.getVaults();
+        const vaults = await akord.vault.list();
+        console.log(vaults);
         setVaults(vaults);
       }
       setIsLoading(false);
@@ -38,7 +39,7 @@ const Vaults = (props) => {
       <pre>
         {"const { akord } = await Akord.auth.signIn(username, password);"}
         <br />
-        {"const vaults = await akord.getVaults();"}
+        {"const vaults = await akord.vault.list();"}
       </pre>
 
       {!state.current_user && (

@@ -16,10 +16,9 @@ const VaultView = (props) => {
     setDownloadingGallery(true);
     for (let i in stacks) {
       const stack = stacks[i];
-      console.log("downloading...", stack);
       try {
         if (stack.id) {
-          const { data: file } = await akord.getStackFile(stack.id);
+          const { data: file } = await akord.stack.getFile(stack.id);
           const fileUrl = URL.createObjectURL(new Blob([file]));
           setImagesUrls((current) => [...current, fileUrl]);
         }
@@ -40,9 +39,9 @@ const VaultView = (props) => {
           state.current_user.wallet,
           state.current_user.jwtToken
         );
-        const folders = await akord.getNodes(vaultId, "folder");
-        const stacks = await akord.getNodes(vaultId, "stack");
-        const notes = await akord.getNodes(vaultId, "note");
+        const folders = await akord.folder.list(vaultId);
+        const stacks = await akord.stack.list(vaultId);
+        const notes = await akord.note.list(vaultId);
         setVault({
           folders,
           stacks,
@@ -62,7 +61,7 @@ const VaultView = (props) => {
         Using the primative types included in the protocol, you can store data
         in your vaults.
       </p>
-      <ul>
+      <ul className="lists">
         <li>
           <b>Stacks</b> are used to store files with versioning, auditing and
           metadata.
@@ -76,14 +75,11 @@ const VaultView = (props) => {
         </li>
       </ul>
       <pre>
-        {`const { data: file, name } = await akord.getStackFile(stack.id);`}
+        {`const folders = await akord.folder.list(vaultId);`}
         <br />
+        {`const stacks = await akord.stack.list(vaultId);`}
         <br />
-        {`const folders = await akord.getNodes(vaultId, "folder");`}
-        <br />
-        {`const stacks = await akord.getNodes(vaultId, "stack");`}
-        <br />
-        {`const memos = await akord.getNodes(vaultId, "memo");`}
+        {`const memos = await akord.memo.list(vaultId);`}
       </pre>
       {isLoading && <div className="spinner-border  text-light"></div>}
       <p>Upload to and download from a stack:</p>
@@ -92,10 +88,10 @@ const VaultView = (props) => {
           "const { stackId } = await akord.stack.create(vaultId, file, 'my first file stack');"
         }
         <br />
-        {"const decryptedFile = await akord.getStackFile(stackId);"}
+        {"const decryptedFile = await akord.stack.file(stackId);"}
       </pre>
 
-      <h3 className="mt-5">Displaying Images</h3>
+      <h3 className="">Displaying Images</h3>
       <div>
         <p>
           For private vaults, all data is encrypted/decrypted on the client.
@@ -103,7 +99,7 @@ const VaultView = (props) => {
           available as BLOB urls.
         </p>
         <pre>
-          {`const { data: file } = await akord.getStackFile(stack.id);`}
+          {`const { data: file } = await akord.stack.file(stack.id);`}
           <br />
           {`var url = URL.createObjectURL(new Blob([file]));`}
           <br />
@@ -124,7 +120,7 @@ const VaultView = (props) => {
       {downloadingGallery && <div className="spinner-border  text-light"></div>}
 
       {vault && vault.stacks.length > 0 && (
-        <div className="my-5">
+        <div className="">
           <h3>Your Stacks</h3>
           <table className="table table-dark">
             <tbody>
@@ -141,7 +137,7 @@ const VaultView = (props) => {
                   <td>v{s.resourceVersion}</td>
                   <td>{s.files[0].fileType}</td>
                 </tr>
-              ))}{" "}
+              ))}
             </tbody>
           </table>
         </div>
@@ -169,7 +165,7 @@ const VaultView = (props) => {
       )}
 
       {vault && (
-        <div className="my-5">
+        <div className="">
           <h3>Your vault's contents</h3>
           <p>
             Here we are constructing a JSON object that contains the folders,

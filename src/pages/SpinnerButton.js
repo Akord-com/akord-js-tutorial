@@ -4,7 +4,7 @@ const SpinnerButton = (props) => {
       {!props.loading && (
         <button
           type="submit"
-          className="btn btn-primary btn-lg my-3"
+          className="btn btn-primary btn-lg my-3 text-dark"
           disabled={props.disabled}
         >
           {props.title}

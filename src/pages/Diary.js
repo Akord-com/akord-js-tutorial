@@ -60,7 +60,7 @@ const Dairy = (props) => {
           state.current_user.wallet,
           state.current_user.jwtToken
         );
-        const vaults = await akord.getVaults();
+        const vaults = await akord.vault.list();
         const vault = vaults.filter((v) => v.name === VAULT_TITLE);
         if (vault.length === 0) {
           setVaultId(null);
