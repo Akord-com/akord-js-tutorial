@@ -24,6 +24,7 @@ p, li {
   font-size: 16px;
   line-height: 22px;
   color: #F7F6FA;
+  margin-bottom: 1em;
 }
 
 h1 {
@@ -52,14 +53,50 @@ h3 {
   line-height: 21px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  color: #E6F783;
+}
+
+th {
+  color: #E6F783;
+}
+
+td, td > * {
+  color: #F7F6FA;
+}
+
+b {
+  font-weight: 700;
+}
+
+label {
+  color: #E6F783;
+}
+
+.form-control {
+  background-color: #312F37;
+  border: none;
+  color: #F7F6FA;
+  font-family: 'JetBrains Mono';
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.form-control:focus {
+  border: none;
+  background-color: #423f4b;
+  box-shadow: none;
+  color: #F7F6FA;
+  font-family: 'JetBrains Mono';
+  font-size: 14px;
+  line-height: 22px;
 }
 
 pre {
   font-family: 'JetBrains Mono';
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 21px;
+  font-size: 14px;
+  line-height: 22px;
   color: #D1CFD8;
   background-color: #312F37;
   padding: 1em;
@@ -69,12 +106,17 @@ ul, nav {
    background-color: #222126;
 }
 
+.diagram {
+  width: 100%;
+  max-width: 40em;
+}
+
 .sidebar {
   border-left: 1px solid #312F37;
 }
 
 nav > a {
-  color: white;
+  color: #F7F6FA;
 }
 
 hr {
@@ -99,12 +141,16 @@ a:hover {
 .nav-link {
   font-family: 'JetBrains Mono';
   font-size: 16px;
-  color: #ffffff;
+  color: #F7F6FA;
 }
 
 .nav-link:hover {
   background-color: #393939;
-  color: #ffffff;
+  color: #F7F6FA;
+}
+
+.nav-item {
+  margin-bottom: 0;
 }
 
 .scrollarea {
@@ -126,5 +172,10 @@ a:hover {
 }
 
 .highlight > p {
-  color: white;
+  color: #F7F6FA;
+}
+
+.alert-highlight {
+  background: #3d402b;
+  padding: 1em;
 }

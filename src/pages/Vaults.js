@@ -47,7 +47,7 @@ const Vaults = (props) => {
       )}
 
       {state.current_user && (
-        <table className="table">
+        <table className="table table-dark">
           <thead>
             <tr>
               <th>Vault Id</th>
@@ -67,7 +67,7 @@ const Vaults = (props) => {
         </table>
       )}
 
-      {isLoading && <div className="spinner-border"></div>}
+      {isLoading && <div className="spinner-border  text-light"></div>}
     </>
   );
 };

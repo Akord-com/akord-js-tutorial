@@ -120,7 +120,7 @@ const Dairy = (props) => {
 
       {isLoading && (
         <div>
-          <span className="spinner-border" />
+          <span className="spinner-border  text-light" />
         </div>
       )}
 

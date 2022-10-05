@@ -22,7 +22,7 @@ const Layout = () => {
       >
         <a href="/" className="d-block text-decoration-none">
           {/* <svg className="bi me-2" width="40" height="32"></svg> */}
-          <h3 className="text-light">Akord-JS Tutorial</h3>
+          <h3 className="">Akord-JS Tutorial</h3>
         </a>
         {state.current_user && (
           <p className="d-block">{state.current_user.email}</p>
@@ -74,9 +74,8 @@ const MobileLinks = () => {
           <li className="nav-item" key={i}>
             <Link
               to={l[1]}
-              className={`nav-link ${
-                location.pathname === l[1] ? "active" : ""
-              }`}
+              className={`nav-link ${location.pathname === l[1] ? "active" : ""
+                }`}
             >
               {l[0]}
             </Link>

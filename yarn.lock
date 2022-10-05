@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@akord/akord-js@^1.3.4":
-  version "1.3.4"
-  resolved "https://registry.yarnpkg.com/@akord/akord-js/-/akord-js-1.3.4.tgz#8321e75d13cc1394eb627946f4927a9e5401eff0"
-  integrity sha512-IVQ1ak/gXqOFAhbQsMineBIXLuOkZ8+Fij/+VYl2WOeb9kMwQqo3f96pa+P3sXn38Augj2dThsheAqKTuDb3Pw==
+"@akord/akord-js@^1.3.5":
+  version "1.3.5"
+  resolved "https://registry.yarnpkg.com/@akord/akord-js/-/akord-js-1.3.5.tgz#0e43663654a04858f79243a0186b6e541f0735a9"
+  integrity sha512-lRqtC4hb4L4JcuPh/LERdyS6X3NvTd8RX/JAMp4K7VlrWKNI391LPgNT4kay4KkyumR+3cAHxVCDpzrcrEtaTA==
   dependencies:
     "@akord/crypto" "0.0.43"
     "@akord/ts-cacheable" "^1.0.7"

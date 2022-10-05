@@ -3,7 +3,7 @@ const Home = () => {
     <>
       <h1 className="card-title mb-3">Akord-js Tutorial</h1>
       <p>
-        This tutorial is designed to introduce Akord Vaults, a solution for user
+        This tutorial is designed to introduce Akord Vaults, a solution for 'Web3 style' user
         owned storaged.
       </p>
       <h3>What is user owned storage?</h3>
@@ -14,13 +14,15 @@ const Home = () => {
         access. Access control is managed by decentralized protocols and
         cryptography.
       </p>
-      <p>
+      <p className="text-center p-3">
         <img
           src="/images/user-owned-storage.png"
-          className=""
-          style={{ width: "100%", maxWidth: "1024px" }}
-          alt="data flow chart"
+          className="diagram"
+          alt="user owned storage"
         />
+      </p>
+      <p>
+        Vaults are portable between dApps, Saas and Enterprise Applications.  Vaults offer a unique set of properties:
       </p>
       <ul>
         <li>
@@ -66,7 +68,7 @@ const Home = () => {
           <b>Vault Diary</b> : how to build a private/permanent diary.
         </li>
       </ul>
-      <h5>Installation</h5>
+      <h3>Installation</h3>
       <p>This tutorial requires packages from :</p>
       <ul>
         <li>
@@ -79,7 +81,7 @@ const Home = () => {
         </li>
       </ul>
       <pre>npm install @akord/akord-js warp-contracts</pre>
-      <div className="alert highlight">
+      <div className="alert-highlight">
         <h2>NOTE: Using akord-js with React</h2>
         <p>
           Using @akord/akord-js requires libraries that may trigger an error

@@ -83,16 +83,19 @@ const Wallet = (props) => {
 
       {state.current_user && (
         <div>
-          <h4>Akord Wallet</h4>
+          <h3>Akord Wallet</h3>
+          <p>
+            This wallet is encrypted with a key derived from the username/password and stored as an attribute in an AWS Cognito account.  You are free to roll your own wallet service or simply leverage the Akord Wallet.
+          </p>
           <pre>{state.current_user.email}</pre>
           <p>
             <button className="btn btn-danger" onClick={logout}>
               Logout
             </button>
           </p>
-          <h5>JWT Token:</h5>
+          <h3>JWT Token:</h3>
           <pre>{state.current_user.jwtToken}</pre>
-          <h5>Wallet Object:</h5>
+          <h3>Wallet Object:</h3>
           <pre className="small" lines={10}>
             {JSON.stringify(state.current_user.wallet, null, 2)}
           </pre>
@@ -115,9 +118,8 @@ const Wallet = (props) => {
               <div className="control">
                 <input
                   autoComplete="off"
-                  className={`form-control border border-warning ${
-                    errors.email && "is-danger"
-                  }`}
+                  className={`form-control transparent-input ${errors.email && "border-danger"
+                    }`}
                   type="email"
                   name="email"
                   onChange={handleChange}
@@ -133,7 +135,7 @@ const Wallet = (props) => {
               <label className="label my-2">Password</label>
               <div className="control">
                 <input
-                  className={`form-control ${errors.password && "is-danger"}`}
+                  className={`form-control transparent-input ${errors.password && "border-danger"}`}
                   type="password"
                   name="password"
                   onChange={handleChange}
@@ -162,11 +164,11 @@ const Wallet = (props) => {
                 type="button"
                 disabled
               >
-                <span className="spinner-border spinner-border-sm"></span>
+                <span className="spinner-border spinner-border-sm  text-light"></span>
                 &nbsp;Login
               </button>
             )}
-            <div className="alert alert-danger">
+            <div className="alert-highlight">
               <h3>Attention: You are decrypting your wallet</h3>
               <p>
                 After logging in, your wallet will be decrypted an its contents

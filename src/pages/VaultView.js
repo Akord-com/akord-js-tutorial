@@ -85,7 +85,7 @@ const VaultView = (props) => {
         <br />
         {`const memos = await akord.getNodes(vaultId, "memo");`}
       </pre>
-      {isLoading && <div className="spinner-border"></div>}
+      {isLoading && <div className="spinner-border  text-light"></div>}
       <p>Upload to and download from a stack:</p>
       <pre>
         {
@@ -115,18 +115,18 @@ const VaultView = (props) => {
       {imageUrls.map((url, i) => (
         <img
           src={url}
-          className="img-thumbnail m-1 border-0"
+          className=" m-1 border-no"
           key={i}
           style={{ maxHeight: "8rem" }}
           alt="vault thumbnail"
         />
       ))}
-      {downloadingGallery && <div className="spinner-border"></div>}
+      {downloadingGallery && <div className="spinner-border  text-light"></div>}
 
       {vault && vault.stacks.length > 0 && (
         <div className="my-5">
           <h3>Your Stacks</h3>
-          <table className="table table-sm">
+          <table className="table table-dark">
             <tbody>
               <tr>
                 <th>ID</th>
@@ -149,7 +149,7 @@ const VaultView = (props) => {
       {vault && vault.notes.length > 0 && (
         <div>
           <h3>Your Notes</h3>
-          <table className="table table-sm">
+          <table className="table table-dark">
             <tbody>
               <tr>
                 <th>ID</th>
