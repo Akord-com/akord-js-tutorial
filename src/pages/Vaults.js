@@ -33,6 +33,7 @@ const Vaults = (props) => {
         Akord stores your data in private, permanent and composable, user owned
         storage units called 'Vaults'.
       </p>
+      <p>Using the `akord` object from signIn, you can get vaults.</p>
 
       <pre>
         {"const { akord } = await Akord.auth.signIn(username, password);"}

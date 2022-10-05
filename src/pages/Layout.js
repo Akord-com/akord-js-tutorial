@@ -2,11 +2,16 @@ import { useContext } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { Context } from "../store";
 
+// NAV LINKS : title, path, icon, active icon
 const LINKS = [
-  ["Wallet", "/wallet", "/images/wallet.svg"],
-  ["Vaults", "/vaults", "/images/vault.svg"],
-  ["PermaDiary", "/permadiary", "/images/pencil.svg"]
-
+  ["Wallet", "/wallet", "/images/wallet.svg", "/images/wallet-dark.svg"],
+  ["Vaults", "/vaults", "/images/vault.svg", "/images/vault-dark.svg"],
+  [
+    "PermaDiary",
+    "/permadiary",
+    "/images/pencil.svg",
+    "/images/pencil-dark.svg",
+  ],
 ];
 
 const Layout = () => {
@@ -20,9 +25,11 @@ const Layout = () => {
         id="navbarToggle"
         style={{ width: "280px" }}
       >
-        <a href="/" className="d-block text-decoration-none">
+        <a href="/" className="d-block text-decoration-none text-center">
           {/* <svg className="bi me-2" width="40" height="32"></svg> */}
-          <h3 className=""><b>Akord-JS</b> Tutorial</h3>
+          <h3 className="brand-logo pt-1">
+            <span className="brand-logo-bold">AKORD-JS</span> TUTORIAL
+          </h3>
         </a>
         {state.current_user && (
           <p className="d-block">{state.current_user.email}</p>
@@ -35,7 +42,7 @@ const Layout = () => {
         style={{ width: "100%" }}
       >
         <MobileLinks />
-        <div className="col-12 p-3" style={{ margin: "0 auto" }}>
+        <div className="col-12" style={{ margin: "0 auto" }}>
           <Outlet />
         </div>
       </div>
@@ -53,14 +60,22 @@ const NavLinks = () => {
             to={l[1]}
             className={`nav-link ${location.pathname === l[1] ? "active" : ""}`}
           >
-            <img src={l[2]} className={"float-start me-3"} />
+            <img
+              src={l[location.pathname != l[1] ? 2 : 3]}
+              className={"float-start me-3"}
+            />
             {l[0]}
           </Link>
         </li>
       ))}
       <li className="nav-item">
-        <a className="nav-link" target={"_blank"} href="http://github.com/akord-com/akord-js-tutorial">
-          <img src="/images/github.svg" className="float-start me-3" />Github
+        <a
+          className="nav-link"
+          target={"_blank"}
+          href="http://github.com/akord-com/akord-js-tutorial"
+        >
+          <img src="/images/github.svg" className="float-start me-3" />
+          Github
         </a>
       </li>
     </ul>
@@ -70,26 +85,32 @@ const NavLinks = () => {
 const MobileLinks = () => {
   const location = useLocation();
   return (
-    <div className="d-md-none">
+    <div className="d-md-none text-center">
       <a href="/" className="d-block text-decoration-none">
-        <h3>Akord-JS Tutorial</h3>
+        <h3 className="brand-logo">
+          <span className="brand-logo-bold">AKORD-JS</span> TUTORIAL
+        </h3>
       </a>
-      <ul className="nav nav-pills flex-column mb-auto rounded">
+      <ul className="nav nav-pills  justify-content-center">
         {LINKS.map((l, i) => (
           <li className="nav-item" key={i}>
             <Link
               to={l[1]}
-              className={`nav-link ${location.pathname === l[1] ? "active" : ""
-                }`}
+              className={`nav-link ${
+                location.pathname === l[1] ? "active" : ""
+              }`}
             >
-              <img src={l[2]} className={"float-start me-3"} />
               {l[0]}
             </Link>
           </li>
         ))}
         <li className="nav-item">
-          <a className="nav-link" target={"_blank"} href="http://github.com/akord-com/akord-js-tutorial">
-            <img src="/images/github.svg" className="float-start me-3" />Github
+          <a
+            className="nav-link"
+            target={"_blank"}
+            href="http://github.com/akord-com/akord-js-tutorial"
+          >
+            Github
           </a>
         </li>
       </ul>
@@ -97,6 +118,5 @@ const MobileLinks = () => {
     </div>
   );
 };
-
 
 export default Layout;

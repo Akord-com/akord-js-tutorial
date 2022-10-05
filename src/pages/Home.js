@@ -1,18 +1,23 @@
 const Home = () => {
   return (
     <>
-      <h1 className="card-title mb-3">Akord-js Tutorial</h1>
+      <h1 className="card-title mb-3">Building with Akord Vaults</h1>
       <p>
-        This tutorial is designed to introduce Akord Vaults, a solution for 'Web3 style' user
-        owned storaged.
+        In this working tutorial and demo, we will show how a developer can
+        integrate user owned storage into their dApps, SaaS or Enterprise
+        applications.
       </p>
       <h3>What is user owned storage?</h3>
       <p>
-        Akord Vaults are private, permanent and composable storage units for
-        web3, SaaS and enterprise environments. They give the user control of
-        their data, by allowing them to choose which apps and/or people have
-        access. Access control is managed by decentralized protocols and
-        cryptography.
+        Akord Vaults provides users with their own private, permanent and
+        composable storage units. They can store their documents and media in
+        them. Or, applications can be granted access to their vaults to get or
+        save data related to the application.
+      </p>
+      <p>
+        Vault owners can consent to other applications having access OR they can
+        grant access to new members in the vault. The owner can choose if the
+        members are contributors or viewers.
       </p>
       <p className="text-center p-3">
         <img
@@ -22,9 +27,16 @@ const Home = () => {
         />
       </p>
       <p>
-        Vaults are portable between dApps, Saas and Enterprise Applications.  Vaults offer a unique set of properties:
+        User Owned Storage is different than traditional cloud architecture
+        because the vault is only decrypted/opened within the user's session,
+        not from the backend.
       </p>
-      <ul>
+      <h3>Akord Vaults</h3>
+      <p>
+        Vaults are portable between dApps, Saas and Enterprise Applications.
+        Vaults offer a unique set of properties:
+      </p>
+      <ul className="lists">
         <li>
           <b>Private</b> by design. AkordJS handles all end to end encryption,
           while making sure data is encrypted during tranmission, processing and
@@ -42,21 +54,16 @@ const Home = () => {
         </li>
       </ul>
       <p>
-        Vaults provide the means for users to own their own data, for them to
-        have the right to consent of that data and portability outside of the
-        applications that use it.
-      </p>
-      <p>
-        In the web3 paradigm, vaults are owned by the user and dApps
-        (decentralized applications) request permission to access it, in the
-        same way they do for interacting with blockchain transactions.
+        Akord Vaults provide the means for users to own their own data, for them
+        to have the right to consent of that data and portability outside of the
+        applications that interact with it.
       </p>
       <h3>Akord-Js and React</h3>
       <p>
         In this React app, we'll cover the basics for how to create, contribute
         to and access an Akord Vault.
       </p>
-      <ul>
+      <ul className="lists">
         <li>
           <b>Wallet</b> : Demonstration of how to access your Akord wallet.
         </li>
@@ -70,7 +77,7 @@ const Home = () => {
       </ul>
       <h3>Installation</h3>
       <p>This tutorial requires packages from :</p>
-      <ul>
+      <ul className="lists">
         <li>
           <b>@akord/akord-js</b> : official package from Akord enabling access
           to the Akord API and Smartweave transactions.
@@ -78,6 +85,10 @@ const Home = () => {
         <li>
           <b>warp-contracts</b> : Smartweave implementation by the RedStone
           team. Warp contracts offers caching and distribution services.
+        </li>
+        <li>
+          <b>amplify</b> : a JavaScript library for frontend and mobile
+          developers building cloud-enabled applications.
         </li>
       </ul>
       <pre>npm install @akord/akord-js warp-contracts</pre>

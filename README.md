@@ -1,6 +1,6 @@
 # Getting Started with Akord Vaults
 
-This project is a tutorial on how to access Akord Vaults using a React app.
+A working tutorial on how to access Akord Vaults from within a React app.
 
 Check out the [Online Demo](http://akord-js-tutorial.akord.com).
 

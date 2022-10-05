@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useForm from "../useForm";
 import validate from "./LoginValidation";
+import SpinnerButton from "./SpinnerButton";
 import { Akord } from "@akord/akord-js";
 import { useContext } from "react";
 import { Context } from "../store";
@@ -62,30 +63,33 @@ const Wallet = (props) => {
     <>
       <h1>Wallets</h1>
       <p>
-        Users hold their private keys in their 'wallet'. Wallets are encrypted
-        with the user's password and is shared across the user's devices.
+        Akord Wallets are used to access the user's keys. The wallet is secured
+        by a 'recovery phrase' and accessible via a username and password.
       </p>
-      <p>We can use the signIn call from Akord :</p>
+
+      <p>Access the wallet using akord-js:</p>
       <pre>
-        {
-          "const { akord, jwtToken, wallet } = await Akord.auth.signIn(email, pass);"
-        }
+        {`import { Akord } from "@akord/akord-js";`}
         <br />
         <br />
-        {"console.log(jwtToken);"}
+        {`// from username password`}
         <br />
-        {"console.log(wallet);"}
+        {`const { akord, jwt, wallet } = await Akord.auth.signIn(email, pass);`}
+        <br />
+        <br />
+        {`// ... or from wallet and jwt`}
+        <br />
+        {`const akord = Akord.init(wallet, jwt);`}
       </pre>
-      <p>
-        If successfull, we get back an `akord` instance along with the jwtToken
-        and Wallet, both useful for making API calls and decrypting data.
-      </p>
 
       {state.current_user && (
         <div>
           <h3>Akord Wallet</h3>
           <p>
-            This wallet is encrypted with a key derived from the username/password and stored as an attribute in an AWS Cognito account.  You are free to roll your own wallet service or simply leverage the Akord Wallet.
+            This wallet is encrypted with a key derived from the
+            username/password and stored as an attribute in an AWS Cognito
+            account. You are free to roll your own wallet service or simply
+            leverage the Akord Wallet.
           </p>
           <pre>{state.current_user.email}</pre>
           <p>
@@ -104,22 +108,15 @@ const Wallet = (props) => {
 
       {!state.current_user && (
         <div>
-          {/* {loggedIn && <Redirect to="/default" />} */}
-          <h3>Login to your Akord Wallet</h3>
-          <p>
-            Sign up for a free wallet at{" "}
-            <a href="http://v2.akord.com" target="_blank" rel="noreferrer">
-              v2.akord.com
-            </a>
-          </p>
           <form onSubmit={handleSubmit} noValidate>
             <div className="field">
               <label className="label my-2">Email</label>
               <div className="control">
                 <input
                   autoComplete="off"
-                  className={`form-control transparent-input ${errors.email && "border-danger"
-                    }`}
+                  className={`form-control transparent-input ${
+                    errors.email && "border-danger"
+                  }`}
                   type="email"
                   name="email"
                   onChange={handleChange}
@@ -135,7 +132,9 @@ const Wallet = (props) => {
               <label className="label my-2">Password</label>
               <div className="control">
                 <input
-                  className={`form-control transparent-input ${errors.password && "border-danger"}`}
+                  className={`form-control transparent-input ${
+                    errors.password && "border-danger"
+                  }`}
                   type="password"
                   name="password"
                   onChange={handleChange}
@@ -149,27 +148,29 @@ const Wallet = (props) => {
                 </p>
               )}
             </div>
-            {!isLoading && (
-              <button
-                type="submit"
-                className="btn btn-primary btn-lg my-3"
-                disabled={!values.password || !values.email}
-              >
-                Login
-              </button>
-            )}
-            {isLoading && (
-              <button
-                className="btn btn-primary btn-lg my-3"
-                type="button"
-                disabled
-              >
-                <span className="spinner-border spinner-border-sm  text-light"></span>
-                &nbsp;Login
-              </button>
-            )}
+
+            <SpinnerButton
+              title="Login"
+              loading={isLoading}
+              disabled={!values.password || !values.email}
+            />
+            <p>
+              If successfull, we get back an `akord` instance along with the JWT
+              token and Wallet, both useful for making API calls and decrypting
+              data.
+            </p>
+            <p className="">
+              If you don't have have a wallet feel free to,{" "}
+              <a href="http://v2.akord.com" target="_blank" rel="noreferrer">
+                sign up.
+              </a>
+            </p>
+
             <div className="alert-highlight">
-              <h3>Attention: You are decrypting your wallet</h3>
+              <h3>
+                Attention: You are decrypting your wallet within this browser
+                session
+              </h3>
               <p>
                 After logging in, your wallet will be decrypted an its contents
                 will be presented on the next screen. Please take precautions to

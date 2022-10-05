@@ -27,6 +27,17 @@ p, li {
   margin-bottom: 1em;
 }
 
+ul {list-style: none}
+
+.lists > li::before {
+  content: "•"; 
+  color: #E6F783; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */ 
+  width: 1em; /* Also needed for space (tweak if needed) */
+  margin-left: -1em; /* Also needed for space (tweak if needed) */
+}
+
 h1 {
   font-family: 'JetBrains Mono';
   font-style: normal;
@@ -52,7 +63,7 @@ h3 {
   font-size: 16px;
   line-height: 21px;
   letter-spacing: 0.05em;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: #E6F783;
 }
 
@@ -106,13 +117,31 @@ ul, nav {
    background-color: #222126;
 }
 
+.brand-logo {
+  font-family: "JetBrains Mono"; 
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 21px;
+  line-height: 28px;
+}
+
+.brand-logo-bold {
+  font-family: "JetBrains Mono"; 
+  font-style: normal;
+  font-weight: 800;
+  font-size: 21px;
+  line-height: 28px;
+}
+
+
 .diagram {
   width: 100%;
   max-width: 40em;
 }
 
 .sidebar {
-  border-left: 1px solid #312F37;
+  border-right: 1px solid #312F37;
 }
 
 nav > a {
@@ -165,6 +194,14 @@ a:hover {
   color: #312F37;
   font-weight: 700;
 }
+
+.btn:hover {
+  color: #312F37;
+}
+
+.btn:disabled {
+  color: #3d402b;
+  }
 
 .highlight {
   background: #3d402b;
