@@ -172,6 +172,24 @@ const VaultView = (props) => {
             stacks, etc from the vault.
           </p>
           <pre>{JSON.stringify(vault, null, 2)}</pre>
+          <h3>Download Links for your Vault</h3>
+          <p>
+            Here we list the stacks with their permaweb download link. If your
+            vault is private, you will need to decrypt yourself or use
+            `akord.stack.getFile(stackId)`.
+          </p>
+          <p>
+            <pre>
+              {JSON.stringify(
+                vault.stacks.map((s) => ({
+                  stackId: s.id,
+                  url: `http://arweave.net/${s.files.at(-1).resourceTx}`,
+                })),
+                null,
+                2
+              )}
+            </pre>
+          </p>
         </div>
       )}
     </>

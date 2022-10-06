@@ -90,9 +90,9 @@ const MobileLinks = () => {
           <span className="brand-logo-bold">AKORD-JS</span> TUTORIAL
         </h3>
       </a>
-      <ul className="nav nav-pills  justify-content-center">
+      <ul className="nav nav-pills nav-fill justify-content-center">
         {LINKS.map((l, i) => (
-          <li className="nav-item" key={i}>
+          <li className="nav-item " key={i}>
             <Link
               to={l[1]}
               className={`nav-link ${
