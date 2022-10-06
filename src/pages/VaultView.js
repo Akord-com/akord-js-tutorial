@@ -88,7 +88,7 @@ const VaultView = (props) => {
           "const { stackId } = await akord.stack.create(vaultId, file, 'my first file stack');"
         }
         <br />
-        {"const decryptedFile = await akord.stack.file(stackId);"}
+        {"const decryptedFile = await akord.stack.getFile(stackId);"}
       </pre>
 
       <h3 className="">Displaying Images</h3>
@@ -99,12 +99,12 @@ const VaultView = (props) => {
           available as BLOB urls.
         </p>
         <pre>
-          {`const { data: file } = await akord.stack.file(stack.id);`}
+          {`const { data: file } = await akord.stack.getFile(stack.id);`}
           <br />
-          {`var url = URL.createObjectURL(new Blob([file]));`}
+          {`const fileUrl = URL.createObjectURL(new Blob([file]));`}
           <br />
           <br />
-          {`<img src={url} />`}
+          {`<img src={fileUrl} />`}
         </pre>
       </div>
 
@@ -178,18 +178,16 @@ const VaultView = (props) => {
             vault is private, you will need to decrypt yourself or use
             `akord.stack.getFile(stackId)`.
           </p>
-          <p>
-            <pre>
-              {JSON.stringify(
-                vault.stacks.map((s) => ({
-                  stackId: s.id,
-                  url: `http://arweave.net/${s.files.at(-1).resourceTx}`,
-                })),
-                null,
-                2
-              )}
-            </pre>
-          </p>
+          <pre>
+            {JSON.stringify(
+              vault.stacks.map((s) => ({
+                stackId: s.id,
+                url: `http://arweave.net/${s.files.at(-1).resourceTx}`,
+              })),
+              null,
+              2
+            )}
+          </pre>
         </div>
       )}
     </>

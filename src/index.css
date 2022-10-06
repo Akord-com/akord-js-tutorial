@@ -67,6 +67,18 @@ h3 {
   margin-bottom: 1rem;
 }
 
+h4 {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #E6F783;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+
 th {
   color: #E6F783;
 }

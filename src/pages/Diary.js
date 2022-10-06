@@ -3,11 +3,13 @@ import { Akord } from "@akord/akord-js";
 import { useContext } from "react";
 import { Context } from "../store";
 import useForm from "../useForm";
+import ReactMarkdown from "react-markdown";
 
 const VAULT_TITLE = "My Vault Diary";
 
 const Dairy = (props) => {
   const [vaultId, setVaultId] = useState(null);
+  const [posts, setPosts] = useState(null);
   const [note, setNote] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [createPrompt, setCreatePrompt] = useState(false);
@@ -17,6 +19,27 @@ const Dairy = (props) => {
     postToDiary,
     () => true
   );
+
+  async function loadPosts(id) {
+    console.log("loading posts ...", id);
+    setIsLoading(true);
+    if (id) {
+      const akord = await Akord.init(
+        state.current_user.wallet,
+        state.current_user.jwtToken
+      );
+      const notes = await akord.note.list(id);
+
+      for (var i in notes) {
+        var note = notes[i];
+        console.log(note);
+      }
+
+      setPosts(notes);
+      console.log(notes);
+    }
+    setIsLoading(false);
+  }
 
   async function postToDiary() {
     setIsLoading(true);
@@ -44,6 +67,7 @@ const Dairy = (props) => {
       const vault = await akord.vault.create(
         VAULT_TITLE //+ " " + Date.now().toString()
       );
+      await loadPosts(vault.vaultId);
       setVaultId(vault.vaultId);
       setCreatePrompt(false);
       console.log(vault.vaultId);
@@ -66,6 +90,7 @@ const Dairy = (props) => {
           setVaultId(null);
           setCreatePrompt(true);
         } else {
+          await loadPosts(vault[0].id);
           setVaultId(vault[0].id);
           setCreatePrompt(false);
         }
@@ -195,46 +220,24 @@ const Dairy = (props) => {
           <pre>{JSON.stringify(note, null, 2)}</pre>
         </div>
       )}
+
+      {posts && (
+        <div className="">
+          <h3>Previous Posts</h3>
+          {posts.map((p, i) => (
+            <div className="card bg-dark my-3" key={i}>
+              <div className="card-body">
+                <h4 className="card-title">{p.title}</h4>
+                <p className="card-text">
+                  <ReactMarkdown>{JSON.parse(p.content)}</ReactMarkdown>
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </>
   );
-
-  // return (
-  //   <div>
-  //     {/* {loggedIn && <Redirect to="/default" />} */}
-  //     <h3>Vault, Warp Contracts</h3>
-  //     <p className="lead">
-  //       View your vault directly from the weave using Red Stone's warp contract.
-  //     </p>
-  //     <p className="small">
-  //       Example: L51SDaFAGZnDAXhAzmEJSrfFPo1R3fyzVDY7aaZFX_M
-  //     </p>
-
-  //     <form onSubmit={handleSubmit} noValidate>
-  //       <div className="field">
-  //         <label className="label">Vault ID </label>
-  //         <div className="control">
-  //           <input
-  //             autoComplete="off"
-  //             className={`form-control ${errors.email && "border-danger"}`}
-  //             name="vaultId"
-  //             onChange={handleChange}
-  //             value={values.vaultId || ""}
-  //             required
-  //           />
-  //           {errors.vaultId && (
-  //             <p className="py-1 my-1 alert alert-danger">{errors.vaultId}</p>
-  //           )}
-  //         </div>
-  //       </div>
-  //       <button type="submit" className="btn btn-primary btn-lg my-3">
-  //         View Vault
-  //       </button>
-  //     </form>
-  //     <ViewState
-  //       state={CONTRACT["L51SDaFAGZnDAXhAzmEJSrfFPo1R3fyzVDY7aaZFX_M"]}
-  //     />
-  //   </div>
-  // );
 };
 
 export default Dairy;
