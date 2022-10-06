@@ -41,7 +41,10 @@ const Layout = () => {
         style={{ width: "100%" }}
       >
         <MobileLinks />
-        <div className="col-12" style={{ margin: "0 auto", maxWidth: "650px" }}>
+        <div
+          className="col"
+          style={{ margin: "0px 10px 20px 10px", maxWidth: "650px" }}
+        >
           <Outlet />
         </div>
       </div>
