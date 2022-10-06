@@ -59,12 +59,12 @@ h2 {
 h3 {
   font-family: 'JetBrains Mono';
   font-style: normal;
-  font-weight: 400;
   font-size: 16px;
-  line-height: 21px;
   letter-spacing: 0.05em;
-  /* text-transform: uppercase; */
+  text-transform: uppercase;
   color: #E6F783;
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
 
 th {
@@ -90,6 +90,9 @@ label {
   font-family: 'JetBrains Mono';
   font-size: 14px;
   line-height: 22px;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 0;
 }
 
 .form-control:focus {
@@ -119,16 +122,17 @@ ul, nav {
 
 .brand-logo {
   font-family: "JetBrains Mono"; 
-  text-transform: uppercase;
   font-style: normal;
   font-weight: 800;
   font-size: 21px;
   line-height: 28px;
+  padding-left: 8px;
 }
 
 .brand-logo-bold {
   font-family: "JetBrains Mono"; 
   font-style: normal;
+  text-transform: uppercase;
   font-weight: 800;
   font-size: 21px;
   line-height: 28px;
@@ -165,21 +169,31 @@ a:hover {
 .nav-pills .show > .nav-link {
   background-color: #E6F783;
   color: black;
+  border-radius: 0;
+  padding-left: 8px;
 }
 
 .nav-link {
   font-family: 'JetBrains Mono';
   font-size: 16px;
   color: #F7F6FA;
+  border-radius: 0;
+  padding-left: 8px;
 }
 
 .nav-link:hover {
   background-color: #393939;
   color: #F7F6FA;
+  border-radius: 0;
 }
 
 .nav-item {
   margin-bottom: 0;
+}
+
+.nav-item img {
+  margin-right: 1rem !important;
+  margin-top: 3px;
 }
 
 .scrollarea {
@@ -191,13 +205,17 @@ a:hover {
   font-size: 16px;
   background-color: #E6F783 !important;
   border-color: #E6F783 !important;
+  border-radius: 100px;
   color: #312F37;
   font-weight: 700;
+  padding: 8px 30px;
 }
 
-.btn:hover {
-  color: #312F37;
+.btn:hover, .btn:first-child:hover {
+  background-color: #f0fea2 !important;
+  color: #000000;
 }
+
 
 .btn:disabled {
   color: #3d402b;

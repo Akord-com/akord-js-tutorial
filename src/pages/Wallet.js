@@ -94,7 +94,7 @@ const Wallet = (props) => {
           </p>
           <pre>{state.current_user.email}</pre>
           <p>
-            <button className="btn btn-danger" onClick={logout}>
+            <button className="btn" onClick={logout}>
               Logout
             </button>
           </p>

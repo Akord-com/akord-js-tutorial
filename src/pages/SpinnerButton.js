@@ -2,17 +2,13 @@ const SpinnerButton = (props) => {
   return (
     <>
       {!props.loading && (
-        <button
-          type="submit"
-          className="btn btn-primary btn-lg my-3 text-dark"
-          disabled={props.disabled}
-        >
+        <button type="submit" className="btn my-3" disabled={props.disabled}>
           {props.title}
         </button>
       )}
       {props.loading && (
-        <button className="btn btn-primary btn-lg my-3" type="button" disabled>
-          <span className="spinner-border spinner-border-sm  text-dark"></span>
+        <button className="btn my-3" type="button" disabled>
+          <span className="spinner-border spinner-border-sm"></span>
           &nbsp;{props.title}
         </button>
       )}

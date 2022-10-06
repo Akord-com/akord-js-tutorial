@@ -25,8 +25,7 @@ const Layout = () => {
         id="navbarToggle"
         style={{ width: "280px" }}
       >
-        <a href="/" className="d-block text-decoration-none text-center">
-          {/* <svg className="bi me-2" width="40" height="32"></svg> */}
+        <a href="/" className="d-block text-decoration-none">
           <h3 className="brand-logo pt-1">
             <span className="brand-logo-bold">AKORD-JS</span> TUTORIAL
           </h3>
@@ -42,7 +41,7 @@ const Layout = () => {
         style={{ width: "100%" }}
       >
         <MobileLinks />
-        <div className="col-12" style={{ margin: "0 auto" }}>
+        <div className="col-12" style={{ margin: "0 auto", maxWidth: "650px" }}>
           <Outlet />
         </div>
       </div>
@@ -62,7 +61,7 @@ const NavLinks = () => {
           >
             <img
               src={l[location.pathname != l[1] ? 2 : 3]}
-              className={"float-start me-3"}
+              className={"float-start"}
             />
             {l[0]}
           </Link>
@@ -74,7 +73,7 @@ const NavLinks = () => {
           target={"_blank"}
           href="http://github.com/akord-com/akord-js-tutorial"
         >
-          <img src="/images/github.svg" className="float-start me-3" />
+          <img src="/images/github.svg" className="float-start" />
           Github
         </a>
       </li>

@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@akord/akord-js@^1.4":
+"@akord/akord-js@^1.4.1":
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/@akord/akord-js/-/akord-js-1.4.1.tgz#58a40180ca482ea2624e4a85247b8a67f85377e3"
   integrity sha512-R5J5m/4G7zzXfgMY75z5M1BkNNoYFqI9pXJBXodZP8xz5dKBeBi7RxizVzLtf+0j7i1+ly2vN7TCl5339JqeLA==
