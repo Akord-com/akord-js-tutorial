@@ -58,7 +58,7 @@ const Home = () => {
         to have the right to consent of that data and portability outside of the
         applications that interact with it.
       </p>
-      <h3>Akord-Js and React</h3>
+      <h3>Akord JS and React</h3>
       <p>
         In this React app, we'll cover the basics for how to create, contribute
         to and access an Akord Vault.
@@ -76,27 +76,19 @@ const Home = () => {
         </li>
       </ul>
       <h3>Installation</h3>
-      <p>This tutorial requires packages from :</p>
+      <p>This tutorial requires :</p>
       <ul className="lists">
         <li>
           <b>@akord/akord-js</b> : official package from Akord enabling access
           to the Akord API and Smartweave transactions.
         </li>
-        <li>
-          <b>warp-contracts</b> : Smartweave implementation by the RedStone
-          team. Warp contracts offers caching and distribution services.
-        </li>
-        <li>
-          <b>amplify</b> : a JavaScript library for frontend and mobile
-          developers building cloud-enabled applications.
-        </li>
       </ul>
-      <pre>npm install @akord/akord-js warp-contracts</pre>
+      <pre>npm install @akord/akord-js</pre>
       <div className="alert-highlight">
         <h2>NOTE: Using akord-js with React</h2>
         <p>
           Using @akord/akord-js requires libraries that may trigger an error
-          related to not finding the 'crypto' or 'constrants' modules.
+          related to not finding the 'crypto' or 'constants' modules.
         </p>
         <p>
           To fix the problem, reference the following in your package.json :
