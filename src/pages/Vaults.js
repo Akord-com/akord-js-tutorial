@@ -39,9 +39,14 @@ const Vaults = (props) => {
     <>
       <h1>Vaults</h1>
       <p>
-        Akord stores your data in private, permanent and composable, user owned
-        storage units called 'Vaults'.
+        Akord Protocol stores your data in private or public, permanent, user
+        owned storage units called 'Vaults'.
       </p>
+      <pre>
+        {
+          "const {(vaultId, membershipId)} =\n\tawait akord.vault.create('Personal Diary');"
+        }
+      </pre>
       <p>Using the `akord` object from signIn, you can get a list vaults,</p>
       <pre>{"const vaults = await akord.vault.list();"}</pre>
       <p>sort them by name,</p>
