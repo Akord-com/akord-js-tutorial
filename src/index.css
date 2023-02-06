@@ -120,6 +120,14 @@ label {
   line-height: 22px;
 }
 
+code {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+ 
+}
+
 pre {
   font-family: 'JetBrains Mono';
   font-style: normal;
@@ -129,6 +137,10 @@ pre {
   color: #D1CFD8;
   background-color: #312F37;
   padding: 1em;
+
+  overflow: auto;
+  word-wrap: normal;
+  white-space: pre;
 }
 
 ul, nav {

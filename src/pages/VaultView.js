@@ -181,14 +181,15 @@ const VaultView = (props) => {
             `akord.stack.getFile(stackId)`.
           </p>
           <pre>
-            {JSON.stringify(
+            {JSON.stringify(vault.stacks)}
+            {/* {JSON.stringify(
               vault.stacks.map((s) => ({
                 stackId: s.id,
                 url: `http://arweave.net/${s.files.at(-1).resourceTx}`,
               })),
               null,
               2
-            )}
+            )} */}
           </pre>
         </div>
       )}

@@ -53,7 +53,7 @@ const Wallet = (props) => {
           jwtToken: jwtToken,
         };
 
-        console.log(user);
+        console.log("Resume login:", user);
       }
     }
     getUser();

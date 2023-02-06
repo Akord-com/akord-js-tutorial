@@ -26,7 +26,7 @@ const Layout = () => {
         style={{ width: "280px" }}
       >
         <a href="/" className="d-block text-decoration-none mb-3">
-          <img src="/images/akord-js.svg"></img>
+          <img src="/images/akord-js.svg" alt="AkordJS Tutorial"></img>
         </a>
         {state.current_user && (
           <p className="d-block">{state.current_user.email}</p>
@@ -61,8 +61,9 @@ const NavLinks = () => {
             className={`nav-link ${location.pathname === l[1] ? "active" : ""}`}
           >
             <img
-              src={l[location.pathname != l[1] ? 2 : 3]}
+              src={l[location.pathname !== l[1] ? 2 : 3]}
               className={"float-start"}
+              alt={location.pathname}
             />
             {l[0]}
           </Link>
@@ -73,8 +74,9 @@ const NavLinks = () => {
           className="nav-link"
           target={"_blank"}
           href="http://github.com/akord-com/akord-js-tutorial"
+          rel="noreferrer"
         >
-          <img src="/images/github.svg" className="float-start" />
+          <img src="/images/github.svg" className="float-start" alt="github" />
           Github
         </a>
       </li>
@@ -109,6 +111,7 @@ const MobileLinks = () => {
             className="nav-link"
             target={"_blank"}
             href="http://github.com/akord-com/akord-js-tutorial"
+            rel="noreferrer"
           >
             Github
           </a>

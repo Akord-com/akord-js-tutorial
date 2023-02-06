@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Akord } from "@akord/akord-js";
 import { useContext } from "react";
 import { Context } from "../store";
@@ -20,26 +20,30 @@ const Dairy = (props) => {
     () => true
   );
 
-  async function loadPosts(id) {
-    console.log("loading posts ...", id);
-    setIsLoading(true);
-    if (id) {
-      const akord = await Akord.init(
-        state.current_user.wallet,
-        state.current_user.jwtToken
-      );
-      const notes = await akord.note.list(id);
+  // async function loadPosts(id) {
+  const loadPosts = useCallback(
+    async (id) => {
+      console.log("loading posts ...", id);
+      setIsLoading(true);
+      if (id) {
+        const akord = await Akord.init(
+          state.current_user.wallet,
+          state.current_user.jwtToken
+        );
+        const notes = await akord.note.list(id);
 
-      for (var i in notes) {
-        var note = notes[i];
-        console.log(note);
+        for (var i in notes) {
+          var note = notes[i];
+          console.log(note);
+        }
+
+        setPosts(notes);
+        console.log(notes);
       }
-
-      setPosts(notes);
-      console.log(notes);
-    }
-    setIsLoading(false);
-  }
+      setIsLoading(false);
+    },
+    [state]
+  );
 
   async function postToDiary() {
     setIsLoading(true);
@@ -100,7 +104,7 @@ const Dairy = (props) => {
       setIsLoading(false);
     }
     findDiaryVault();
-  }, [state]);
+  }, [state, loadPosts]);
 
   return (
     <>
