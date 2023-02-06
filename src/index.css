@@ -1,5 +1,6 @@
 * {
   font-family: "Inter", sans-serif;
+  font-size: 16px;
 }
 
 body {
@@ -39,20 +40,22 @@ ul {list-style: none}
 }
 
 h1 {
-  font-family: 'JetBrains Mono';
+  font-family: 'Inter';
   font-style: normal;
-  font-weight: 300;
-  font-size: 35px;
-  line-height: 46px;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 44px;
   color: #E6F783;
 }
 
 h2 {
   font-family: 'JetBrains Mono';
   font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 26px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   color: #E6F783;
 }
 
@@ -182,15 +185,21 @@ a:hover {
   background-color: #E6F783;
   color: black;
   border-radius: 0;
-  padding-left: 8px;
+  /* padding-left: 8px; */
 }
 
 .nav-link {
-  font-family: 'JetBrains Mono';
-  font-size: 16px;
-  color: #F7F6FA;
-  border-radius: 0;
-  padding-left: 8px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  color: white;
+  margin-left: -20px;
+}
+
+.nav-item > .active {
+  /* padding-left: 20px; */
 }
 
 .nav-link:hover {

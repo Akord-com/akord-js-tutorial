@@ -25,10 +25,8 @@ const Layout = () => {
         id="navbarToggle"
         style={{ width: "280px" }}
       >
-        <a href="/" className="d-block text-decoration-none">
-          <h3 className="brand-logo pt-1">
-            <span className="brand-logo-bold">AKORD-JS</span> TUTORIAL
-          </h3>
+        <a href="/" className="d-block text-decoration-none mb-3">
+          <img src="/images/akord-js.svg"></img>
         </a>
         {state.current_user && (
           <p className="d-block">{state.current_user.email}</p>

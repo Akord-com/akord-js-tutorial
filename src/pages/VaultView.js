@@ -54,6 +54,8 @@ const VaultView = (props) => {
     loadVault(params.vaultId);
   }, [state, params]);
 
+  console.log(vault);
+
   return (
     <>
       <h1>Vault Contents</h1>
@@ -135,7 +137,7 @@ const VaultView = (props) => {
                   <td>{s.id}</td>
                   <td>{s.title}</td>
                   <td>v{s.resourceVersion}</td>
-                  <td>{s.files[0].fileType}</td>
+                  {/* <td>{s.files[0].fileType}</td> */}
                 </tr>
               ))}
             </tbody>
