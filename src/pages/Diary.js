@@ -32,6 +32,12 @@ const Dairy = (props) => {
         );
         const notes = await akord.note.list(id);
 
+        // tesat code
+        // if (notes.length > 0) {
+        //   const n = await akord.note.get(notes[0]);
+        //   console.log(n);
+        // }
+
         for (var i in notes) {
           var note = notes[i];
           console.log(note);
@@ -105,6 +111,8 @@ const Dairy = (props) => {
     }
     findDiaryVault();
   }, [state, loadPosts]);
+
+  console.log(posts);
 
   return (
     <>
@@ -233,7 +241,7 @@ const Dairy = (props) => {
               <div className="card-body">
                 <h4 className="card-title">{p.title}</h4>
                 <p className="card-text">
-                  <ReactMarkdown>{JSON.parse(p.content)}</ReactMarkdown>
+                  {/* <ReactMarkdown>{JSON.parse(p.content)}</ReactMarkdown> */}
                 </p>
               </div>
             </div>

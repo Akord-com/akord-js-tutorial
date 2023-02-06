@@ -42,16 +42,20 @@ const Vaults = (props) => {
         Akord Protocol stores your data in private or public, permanent, user
         owned storage units called 'Vaults'.
       </p>
+      <p>
+        Using your wallet to create an `akord` object from authentication, you
+        can work with your vaults and their contents to :
+      </p>
+      <p>Create a private vault.</p>
       <pre>
-        {
-          "const {(vaultId, membershipId)} =\n\tawait akord.vault.create('Personal Diary');"
-        }
+        {"const {(vaultId, membershipId)} =\n"}
+        {"  await akord.vault.create('Personal Diary');"}
       </pre>
-      <p>Using the `akord` object from signIn, you can get a list vaults,</p>
+      <p>List your vaults.</p>
       <pre>{"const vaults = await akord.vault.list();"}</pre>
-      <p>sort them by name,</p>
+      <p>Sort them by name.</p>
       <pre>{"vaults.sort((a,b) => (a.name >= b.name))"}</pre>
-      <p>and filter them by status.</p>
+      <p>Filter them by status</p>
       <pre>{"vaults.filter((v) => v.status === 'ACTIVE')"}</pre>
       {!state.current_user && (
         <p>
