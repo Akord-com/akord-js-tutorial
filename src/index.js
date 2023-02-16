@@ -1,4 +1,5 @@
 import ReactDOM from "react-dom/client";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Store from "./store";
 import Layout from "./pages/Layout";
@@ -11,9 +12,11 @@ import VaultView from "./pages/VaultView";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
+
 export default function App() {
   return (
     <Store>
+
       <div className="container">
         <BrowserRouter>
           <Routes>
@@ -28,6 +31,7 @@ export default function App() {
           </Routes>
         </BrowserRouter>
       </div>
+
     </Store>
   );
 }

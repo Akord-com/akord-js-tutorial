@@ -1,6 +1,8 @@
+
 const Home = () => {
   return (
     <>
+
       <h1 className="card-title mb-3">Building with Akord Vaults</h1>
       <p>
         In this working tutorial and demo, we will show how a developer can
@@ -102,6 +104,9 @@ const Home = () => {
           <br />
           {`}`}
           <br />
+        </pre>
+        <pre className="">
+
         </pre>
       </div>
     </>

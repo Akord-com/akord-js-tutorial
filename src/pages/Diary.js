@@ -3,7 +3,7 @@ import { Akord } from "@akord/akord-js";
 import { useContext } from "react";
 import { Context } from "../store";
 import useForm from "../useForm";
-import ReactMarkdown from "react-markdown";
+// import ReactMarkdown from "react-markdown";
 
 const VAULT_TITLE = "My Vault Diary";
 
