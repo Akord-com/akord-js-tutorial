@@ -47,7 +47,7 @@ const VaultGallery = (props) => {
 
   return (
     <>
-      <Md src={"md/vaultgallery.md"} />
+      <Md src={"/md/vaultgallery.md"} />
       <p>
         {imageUrls.map((url, i) => (
           <img

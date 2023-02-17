@@ -40,7 +40,7 @@ const Vaults = (props) => {
 
   return (
     <>
-      <Md src={"md/vaults.md"} />
+      <Md src={"/md/vaults.md"} />
       {!state.current_user && (
         <p>
           <a href="/wallet">Login with your wallet</a> to view your vaults.

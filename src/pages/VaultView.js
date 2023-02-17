@@ -55,7 +55,7 @@ const VaultView = (props) => {
 
   return (
     <>
-      <Md src={"md/vaultview.md"} />
+      <Md src={"/md/vaultview.md"} />
       {isLoading && <div className="spinner-border  text-light"></div>}
       {nodes && (
         <div className="">
