@@ -7,7 +7,6 @@ import { Context } from "../store";
 
 // markdown
 import Md from '../md/Md';
-import vaultview from '../md/vaultview.md';
 
 const VaultView = (props) => {
   const params = useParams();
@@ -56,7 +55,7 @@ const VaultView = (props) => {
 
   return (
     <>
-      <Md src={vaultview} />
+      <Md src={"md/vaultview.md"} />
       {isLoading && <div className="spinner-border  text-light"></div>}
       {nodes && (
         <div className="">

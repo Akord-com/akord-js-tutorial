@@ -10,7 +10,6 @@ const Md = (props) => {
     console.log(mdText)
 
     return <ReactMarkdown className='md'>{mdText}</ReactMarkdown>
-    return (<ReactMarkdown className="md" source={mdText} />)
 }
 
 export default Md;

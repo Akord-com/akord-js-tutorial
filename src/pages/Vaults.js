@@ -8,7 +8,6 @@ import "react-dropdown/style.css";
 
 // markdown
 import Md from '../md/Md';
-import vault from '../md/vaults.md';
 
 const Vaults = (props) => {
   const [state] = useContext(Context);
@@ -41,7 +40,7 @@ const Vaults = (props) => {
 
   return (
     <>
-      <Md src={vault} />
+      <Md src={"md/vaults.md"} />
       {!state.current_user && (
         <p>
           <a href="/wallet">Login with your wallet</a> to view your vaults.

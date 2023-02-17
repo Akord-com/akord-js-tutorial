@@ -8,7 +8,6 @@ import { Context } from "../store";
 
 // markdown
 import Md from '../md/Md';
-import wallet from '../md/wallet.md';
 
 const COGNITO_LOCAL_STORAGE =
   "CognitoIdentityServiceProvider.7u2a1pf5i6shfo7enci6bagk7u.LastAuthUser";
@@ -63,7 +62,7 @@ const Wallet = (props) => {
 
   return (
     <>
-      <Md src={wallet} />
+      <Md src={"md/wallet.md"} />
 
       {state.current_user && (
         <div>

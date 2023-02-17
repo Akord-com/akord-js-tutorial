@@ -6,7 +6,6 @@ import { Context } from "../store";
 
 // markdown
 import Md from '../md/Md';
-import vaultgallery from '../md/vaultgallery.md';
 
 const VaultGallery = (props) => {
   const params = useParams();
@@ -48,7 +47,7 @@ const VaultGallery = (props) => {
 
   return (
     <>
-      <Md src={vaultgallery} />
+      <Md src={"md/vaultgallery.md"} />
       <p>
         {imageUrls.map((url, i) => (
           <img
