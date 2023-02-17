@@ -12,7 +12,6 @@ const VaultGallery = (props) => {
   const params = useParams();
   const [state] = useContext(Context);
   const [imageUrls, setImagesUrls] = useState([]);
-  const [vault, setVault] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -46,8 +45,6 @@ const VaultGallery = (props) => {
     };
     loadVault(params.vaultId);
   }, [state, params]);
-
-  console.log(vault);
 
   return (
     <>

@@ -16,8 +16,11 @@ const folders = await akord.folder.listAll(vaultId);
 Stacks are useful contains for files. A stack keeps track of each revision of the file and provides an audit trail of all changes. Stacks can be contained in folders.
 
 ```
-const { stackId } = await akord.stack.create(vaultId, file, 'my first file stack');
-const decryptedFile = await akord.stack.getFile(stackId);
+const { stackId } =
+    await akord.stack.create(vaultId, file, 'My Logo.png');
+
+const decryptedFile =
+    await akord.stack.getFile(stackId);
 ```
 
 From your stack, you will need to download and decrypt the associated file. For example, below we download the file and display it as an image in the browser.
@@ -50,6 +53,8 @@ const memos = await akord.memo.listAll(vaultId);
 You can even react to a memo.
 
 ```
-// valid values: [JOY, ASTONISHED, CRY, HEART, FIRE, THUMBS_UP, THUMBS_DOWN, PRAY]
-const { transactionId } = await akord.memo.addReaction(memoId, Akord.reactionEmoji.FIRE);
+// valid values:
+// [JOY, ASTONISHED, CRY, HEART, FIRE, THUMBS_UP, THUMBS_DOWN, PRAY]
+const { transactionId } =
+    await akord.memo.addReaction(memoId, Akord.reactionEmoji.FIRE);
 ```

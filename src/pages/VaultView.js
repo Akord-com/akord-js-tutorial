@@ -13,26 +13,43 @@ const VaultView = (props) => {
   const params = useParams();
   const [state] = useContext(Context);
   const [vault, setVault] = useState(null);
+  const [nodes, setNodes] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const loadVault = async (vaultId) => {
-      // Update the document title using the browser API
-
       if (state.current_user) {
         setIsLoading(true);
+
         const akord = await Akord.init(
           state.current_user.wallet,
           state.current_user.jwtToken
         );
-        const folders = await akord.folder.listAll(vaultId);
-        const stacks = await akord.stack.listAll(vaultId);
-        const notes = await akord.note.listAll(vaultId);
-        setVault({
-          folders,
-          stacks,
-          notes,
-        });
+
+        const nodes = [];
+
+        const folders = (
+          await akord.folder.listAll(vaultId)).map((f) => [f.name, f.id, "folder"]
+          )
+        nodes.push(...folders);
+
+        const stacks = (
+          await akord.stack.listAll(vaultId)).map((f) => [f.name, f.id, "stack"]
+          )
+        nodes.push(...stacks);
+
+        const notes = (
+          await akord.note.listAll(vaultId)).map((f) => [f.name, f.id, "note"]
+          );
+        nodes.push(...notes);
+
+        const memos = (
+          await akord.memo.listAll(vaultId)).map((f) => [f.name, f.id, "memo"]
+          );
+        nodes.push(...memos);
+
+        console.log(nodes)
+        setNodes(nodes);
       }
       setIsLoading(false);
     };
@@ -45,46 +62,26 @@ const VaultView = (props) => {
     <>
       <Md src={vaultview} />
       {isLoading && <div className="spinner-border  text-light"></div>}
-      {vault && vault.stacks.length > 0 && (
+      {nodes && (
         <div className="">
-          <h3>Your Stacks</h3>
+          <hr></hr>
+          <h3>Contents in your vault</h3>
+          <p>Vault Id: <code>{params.vaultId}</code></p>
           <p>
-            <Link to={`/gallery/${params.vaultId}`}>View this vault as a photo gallery</Link>
-
+            <Link className="btn" to={`/gallery/${params.vaultId}`}>Photo Gallery</Link>
           </p>
           <table className="table table-dark">
             <tbody>
               <tr>
                 <th>ID</th>
                 <th>Title</th>
-                <th>Version</th>
+                <th>Node</th>
               </tr>
-              {vault.stacks.map((s, i) => (
+              {nodes.map((n, i) => (
                 <tr key={i} className="smaller">
-                  <td>{s.id.slice(0, 4)}</td>
-                  <td>{s.name}</td>
-                  <td>v{s.resourceVersion}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
-      {vault && vault.notes.length > 0 && (
-        <div>
-          <h3>Your Notes</h3>
-          <table className="table table-dark">
-            <tbody>
-              <tr>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Version</th>
-              </tr>
-              {vault.notes.map((s, i) => (
-                <tr key={i} className="smaller">
-                  <td>{s.id}</td>
-                  <td>{s.title}</td>
-                  <td>v{s.resourceVersion}</td>
+                  <td>{n[1].slice(0, 4) + "..." + n[0].slice(-2)}</td>
+                  <td>{n[0]}</td>
+                  <td>{n[2]}</td>
                 </tr>
               ))}
             </tbody>
