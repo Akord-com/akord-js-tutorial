@@ -1,33 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Akord } from "@akord/akord-js";
 import { useContext } from "react";
 import { Context } from "../store";
 
+// markdown
+import Md from '../md/Md';
+import vaultview from '../md/vaultview.md';
+
 const VaultView = (props) => {
   const params = useParams();
   const [state] = useContext(Context);
-  const [imageUrls, setImagesUrls] = useState([]);
   const [vault, setVault] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [downloadingGallery, setDownloadingGallery] = useState(false);
-
-  const downloadImages = async (stacks, akord) => {
-    setDownloadingGallery(true);
-    for (let i in stacks) {
-      const stack = stacks[i];
-      try {
-        if (stack.id) {
-          const { data: file } = await akord.stack.getFile(stack.id);
-          const fileUrl = URL.createObjectURL(new Blob([file]));
-          setImagesUrls((current) => [...current, fileUrl]);
-        }
-      } catch (error) {
-        console.log("Error Downloading:", error);
-      }
-    }
-    setDownloadingGallery(false);
-  };
 
   useEffect(() => {
     const loadVault = async (vaultId) => {
@@ -39,15 +25,14 @@ const VaultView = (props) => {
           state.current_user.wallet,
           state.current_user.jwtToken
         );
-        const folders = await akord.folder.list(vaultId);
-        const stacks = await akord.stack.list(vaultId);
-        const notes = await akord.note.list(vaultId);
+        const folders = await akord.folder.listAll(vaultId);
+        const stacks = await akord.stack.listAll(vaultId);
+        const notes = await akord.note.listAll(vaultId);
         setVault({
           folders,
           stacks,
           notes,
         });
-        downloadImages(stacks, akord);
       }
       setIsLoading(false);
     };
@@ -58,86 +43,27 @@ const VaultView = (props) => {
 
   return (
     <>
-      <h1>Vault Contents</h1>
-      <p>
-        Using the primative types included in the protocol, you can store data
-        in your vaults.
-      </p>
-      <ul className="lists">
-        <li>
-          <b>Stacks</b> are used to store files with versioning, auditing and
-          metadata.
-        </li>
-        <li>
-          <b>Notes</b> are markdown files stored in your vault and can be used
-          for documents.
-        </li>
-        <li>
-          <b>Memos</b> are like messages and be used to create a chat group.
-        </li>
-      </ul>
-      <pre>
-        {`const folders = await akord.folder.list(vaultId);`}
-        <br />
-        {`const stacks = await akord.stack.list(vaultId);`}
-        <br />
-        {`const memos = await akord.memo.list(vaultId);`}
-      </pre>
+      <Md src={vaultview} />
       {isLoading && <div className="spinner-border  text-light"></div>}
-      <p>Upload to and download from a stack:</p>
-      <pre>
-        {
-          "const { stackId } = await akord.stack.create(vaultId, file, 'my first file stack');"
-        }
-        <br />
-        {"const decryptedFile = await akord.stack.getFile(stackId);"}
-      </pre>
-
-      <h3 className="">Displaying Images</h3>
-      <div>
-        <p>
-          For private vaults, all data is encrypted/decrypted on the client.
-          Akord-js handles encryption so can download the images and make them
-          available as BLOB urls.
-        </p>
-        <pre>
-          {`const { data: file } = await akord.stack.getFile(stack.id);`}
-          <br />
-          {`const fileUrl = URL.createObjectURL(new Blob([file]));`}
-          <br />
-          <br />
-          {`<img src={fileUrl} />`}
-        </pre>
-      </div>
-
-      {imageUrls.map((url, i) => (
-        <img
-          src={url}
-          className=" m-1 border-no"
-          key={i}
-          style={{ maxHeight: "8rem" }}
-          alt="vault thumbnail"
-        />
-      ))}
-      {downloadingGallery && <div className="spinner-border  text-light"></div>}
-
       {vault && vault.stacks.length > 0 && (
         <div className="">
           <h3>Your Stacks</h3>
+          <p>
+            <Link to={`/gallery/${params.vaultId}`}>View this vault as a photo gallery</Link>
+
+          </p>
           <table className="table table-dark">
             <tbody>
               <tr>
                 <th>ID</th>
                 <th>Title</th>
                 <th>Version</th>
-                <th>Type</th>
               </tr>
               {vault.stacks.map((s, i) => (
                 <tr key={i} className="smaller">
-                  <td>{s.id}</td>
-                  <td>{s.title}</td>
+                  <td>{s.id.slice(0, 4)}</td>
+                  <td>{s.name}</td>
                   <td>v{s.resourceVersion}</td>
-                  {/* <td>{s.files[0].fileType}</td> */}
                 </tr>
               ))}
             </tbody>

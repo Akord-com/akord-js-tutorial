@@ -18,76 +18,79 @@ main {
   overflow-y: hidden;
 }
 
-p, li {
-  font-family: 'Inter';
+p,
+li {
+  font-family: "Inter";
   font-style: normal;
   font-weight: 300;
   font-size: 16px;
   line-height: 22px;
-  color: #F7F6FA;
+  color: #f7f6fa;
   margin-bottom: 1em;
 }
 
-ul {list-style: none}
+ul {
+  list-style: none;
+}
 
 .lists > li::before {
-  content: "•"; 
-  color: #E6F783; /* Change the color */
+  content: "•";
+  color: #e6f783; /* Change the color */
   font-weight: bold; /* If you want it to be bold */
-  display: inline-block; /* Needed to add space between the bullet and the text */ 
+  display: inline-block; /* Needed to add space between the bullet and the text */
   width: 1em; /* Also needed for space (tweak if needed) */
   margin-left: -1em; /* Also needed for space (tweak if needed) */
 }
 
 h1 {
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: normal;
   font-weight: 700;
   font-size: 36px;
   line-height: 44px;
-  color: #E6F783;
+  color: #e6f783;
 }
 
 h2 {
-  font-family: 'JetBrains Mono';
+  font-family: "JetBrains Mono";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 21px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #E6F783;
+  color: #e6f783;
 }
 
 h3 {
-  font-family: 'JetBrains Mono';
+  font-family: "JetBrains Mono";
   font-style: normal;
   font-size: 16px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #E6F783;
+  color: #e6f783;
   margin-top: 0;
   margin-bottom: 1rem;
 }
 
 h4 {
-  font-family: 'JetBrains Mono';
+  font-family: "JetBrains Mono";
   font-style: normal;
   font-size: 14px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #E6F783;
+  color: #e6f783;
   margin-top: 0;
   margin-bottom: 1rem;
 }
 
-
 th {
-  color: #E6F783;
+  color: #e6f783;
 }
 
-td, td > * {
-  color: #F7F6FA;
+td,
+td > * {
+  color: #f7f6fa;
 }
 
 b {
@@ -95,14 +98,14 @@ b {
 }
 
 label {
-  color: #E6F783;
+  color: #e6f783;
 }
 
 .form-control {
-  background-color: #312F37;
+  background-color: #312f37;
   border: none;
-  color: #F7F6FA;
-  font-family: 'JetBrains Mono';
+  color: #f7f6fa;
+  font-family: "JetBrains Mono";
   font-size: 14px;
   line-height: 22px;
   padding: 0.75rem;
@@ -114,28 +117,27 @@ label {
   border: none;
   background-color: #423f4b;
   box-shadow: none;
-  color: #F7F6FA;
-  font-family: 'JetBrains Mono';
+  color: #f7f6fa;
+  font-family: "JetBrains Mono";
   font-size: 14px;
   line-height: 22px;
 }
 
 code {
-  font-family: 'JetBrains Mono';
+  font-family: "JetBrains Mono";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
- 
 }
 
 pre {
-  font-family: 'JetBrains Mono';
+  font-family: "JetBrains Mono";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 22px;
-  color: #D1CFD8;
-  background-color: #312F37;
+  color: #d1cfd8;
+  background-color: #312f37;
   padding: 1em;
 
   overflow: auto;
@@ -143,12 +145,13 @@ pre {
   white-space: pre;
 }
 
-ul, nav {
-   background-color: #222126;
+ul,
+nav {
+  background-color: #222126;
 }
 
 .brand-logo {
-  font-family: "JetBrains Mono"; 
+  font-family: "JetBrains Mono";
   font-style: normal;
   font-weight: 300;
   font-size: 21px;
@@ -157,7 +160,7 @@ ul, nav {
 }
 
 .brand-logo-bold {
-  font-family: "JetBrains Mono"; 
+  font-family: "JetBrains Mono";
   font-style: normal;
   text-transform: uppercase;
   font-weight: 800;
@@ -165,18 +168,17 @@ ul, nav {
   line-height: 28px;
 }
 
-
 .diagram {
   width: 100%;
   max-width: 40em;
 }
 
 .sidebar {
-  border-right: 1px solid #312F37;
+  border-right: 1px solid #312f37;
 }
 
 nav > a {
-  color: #F7F6FA;
+  color: #f7f6fa;
 }
 
 hr {
@@ -185,7 +187,7 @@ hr {
 }
 
 a {
-  color: #E6F783;
+  color: #e6f783;
 }
 
 a:hover {
@@ -194,14 +196,14 @@ a:hover {
 
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
-  background-color: #E6F783;
+  background-color: #e6f783;
   color: black;
   border-radius: 0;
   /* padding-left: 8px; */
 }
 
 .nav-link {
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
@@ -216,7 +218,7 @@ a:hover {
 
 .nav-link:hover {
   background-color: #393939;
-  color: #F7F6FA;
+  color: #f7f6fa;
   border-radius: 0;
 }
 
@@ -234,36 +236,49 @@ a:hover {
 }
 
 .btn {
-  font-family: 'JetBrains Mono';
+  font-family: "JetBrains Mono";
   font-size: 16px;
-  background-color: #E6F783 !important;
-  border-color: #E6F783 !important;
+  background-color: #e6f783 !important;
+  border-color: #e6f783 !important;
   border-radius: 100px;
-  color: #312F37;
+  color: #312f37;
   font-weight: 700;
   padding: 8px 30px;
 }
 
-.btn:hover, .btn:first-child:hover {
+.btn:hover,
+.btn:first-child:hover {
   background-color: #f0fea2 !important;
   color: #000000;
 }
 
-
 .btn:disabled {
   color: #3d402b;
-  }
+}
 
 .highlight {
   background: #3d402b;
-  
 }
 
 .highlight > p {
-  color: #F7F6FA;
+  color: #f7f6fa;
 }
 
 .alert-highlight {
   background: #3d402b;
   padding: 1em;
+}
+
+/* markdown */
+.md img {
+  width: 100%;
+}
+
+.md strong {
+  font-weight: 700;
+}
+
+.dropdown {
+  background-color: #222126;
+  color: white;
 }

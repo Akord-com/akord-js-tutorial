@@ -6,6 +6,10 @@ import { Context } from "../store";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 
+// markdown
+import Md from '../md/Md';
+import vault from '../md/vaults.md';
+
 const Vaults = (props) => {
   const [state] = useContext(Context);
   const [vaults, setVaults] = useState([]);
@@ -37,26 +41,7 @@ const Vaults = (props) => {
 
   return (
     <>
-      <h1>Vaults</h1>
-      <p>
-        Akord Protocol stores your data in private or public, permanent, user
-        owned storage units called 'Vaults'.
-      </p>
-      <p>
-        Using your wallet to create an `akord` object from authentication, you
-        can work with your vaults and their contents to :
-      </p>
-      <p>Create a private vault.</p>
-      <pre>
-        {"const {(vaultId, membershipId)} =\n"}
-        {"  await akord.vault.create('Personal Diary');"}
-      </pre>
-      <p>List your vaults.</p>
-      <pre>{"const vaults = await akord.vault.list();"}</pre>
-      <p>Sort them by name.</p>
-      <pre>{"vaults.sort((a,b) => (a.name >= b.name))"}</pre>
-      <p>Filter them by status</p>
-      <pre>{"vaults.filter((v) => v.status === 'ACTIVE')"}</pre>
+      <Md src={vault} />
       {!state.current_user && (
         <p>
           <a href="/wallet">Login with your wallet</a> to view your vaults.
@@ -70,6 +55,7 @@ const Vaults = (props) => {
             onChange={onStatusChange}
             value={defaultOption}
             placeholder="Select an option"
+            className='dropdown'
           />
 
           <table className="table table-dark">

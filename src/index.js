@@ -8,15 +8,14 @@ import Wallet from "./pages/Wallet";
 import Dairy from "./pages/Diary";
 import Vaults from "./pages/Vaults";
 import VaultView from "./pages/VaultView";
+import VaultGallery from "./pages/VaultGallery";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
-
 export default function App() {
   return (
     <Store>
-
       <div className="container">
         <BrowserRouter>
           <Routes>
@@ -25,6 +24,7 @@ export default function App() {
               <Route path="wallet" element={<Wallet />} />
               <Route path="vaults" element={<Vaults />} />
               <Route path="vaults/:vaultId" element={<VaultView />} />
+              <Route path="gallery/:vaultId" element={<VaultGallery />} />
               <Route path="permadiary" element={<Dairy />} />
               <Route path="*" element={<p>No Page</p>} />
             </Route>

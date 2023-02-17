@@ -116,7 +116,7 @@ const Dairy = (props) => {
 
   return (
     <>
-      <h1>PermaDiary</h1>
+      <h1>Diary</h1>
       <p className="lead">
         Post and read from your encrypted, user owned vault.
       </p>

@@ -7,7 +7,7 @@ const LINKS = [
   ["Wallet", "/wallet", "/images/wallet.svg", "/images/wallet-dark.svg"],
   ["Vaults", "/vaults", "/images/vault.svg", "/images/vault-dark.svg"],
   [
-    "PermaDiary",
+    "Diary",
     "/permadiary",
     "/images/pencil.svg",
     "/images/pencil-dark.svg",
@@ -98,9 +98,8 @@ const MobileLinks = () => {
           <li className="nav-item " key={i}>
             <Link
               to={l[1]}
-              className={`nav-link ${
-                location.pathname === l[1] ? "active" : ""
-              }`}
+              className={`nav-link ${location.pathname === l[1] ? "active" : ""
+                }`}
             >
               {l[0]}
             </Link>
