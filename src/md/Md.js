@@ -7,7 +7,20 @@ const Md = (props) => {
         fetch(props.src).then(res => res.text()).then(text => setMdText(text))
     })
 
-    return (<ReactMarkdown className="md" children={mdText} />)
+    console.log(mdText)
+
+    const markdown = `
+  # Header 1
+  ## Header 2
+
+  _ italic _
+
+  ** bold **
+
+  <b> bold Html </b>
+  `;
+    return <pre>{mdText}</pre>
+    return (<ReactMarkdown className="md" source={markdown} />)
 }
 
 export default Md;
