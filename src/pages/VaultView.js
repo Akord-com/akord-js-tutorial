@@ -12,7 +12,6 @@ import vaultview from '../md/vaultview.md';
 const VaultView = (props) => {
   const params = useParams();
   const [state] = useContext(Context);
-  const [vault, setVault] = useState(null);
   const [nodes, setNodes] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -48,15 +47,12 @@ const VaultView = (props) => {
           );
         nodes.push(...memos);
 
-        console.log(nodes)
         setNodes(nodes);
       }
       setIsLoading(false);
     };
     loadVault(params.vaultId);
   }, [state, params]);
-
-  console.log(vault);
 
   return (
     <>
@@ -86,34 +82,6 @@ const VaultView = (props) => {
               ))}
             </tbody>
           </table>
-        </div>
-      )}
-
-      {vault && (
-        <div className="">
-          <h3>Your vault's contents</h3>
-          <p>
-            Here we are constructing a JSON object that contains the folders,
-            stacks, etc from the vault.
-          </p>
-          <pre>{JSON.stringify(vault, null, 2)}</pre>
-          <h3>Download Links for your Vault</h3>
-          <p>
-            Here we list the stacks with their permaweb download link. If your
-            vault is private, you will need to decrypt yourself or use
-            `akord.stack.getFile(stackId)`.
-          </p>
-          <pre>
-            {JSON.stringify(vault.stacks)}
-            {/* {JSON.stringify(
-              vault.stacks.map((s) => ({
-                stackId: s.id,
-                url: `http://arweave.net/${s.files.at(-1).resourceTx}`,
-              })),
-              null,
-              2
-            )} */}
-          </pre>
         </div>
       )}
     </>

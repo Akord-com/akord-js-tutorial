@@ -9,18 +9,8 @@ const Md = (props) => {
 
     console.log(mdText)
 
-    const markdown = `
-  # Header 1
-  ## Header 2
-
-  _ italic _
-
-  ** bold **
-
-  <b> bold Html </b>
-  `;
-    return <pre>{mdText}</pre>
-    return (<ReactMarkdown className="md" source={markdown} />)
+    return <ReactMarkdown className='md'>{mdText}</ReactMarkdown>
+    return (<ReactMarkdown className="md" source={mdText} />)
 }
 
 export default Md;
