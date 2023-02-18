@@ -1,3 +1,4 @@
+const home = `
 # Building with Akord Vaults
 
 In this working tutorial and demo, we will show how a developer can
@@ -61,10 +62,13 @@ The quickest way to configure React for AkordJs is to clone the [akordjs-bootstr
 
 Included in the template are dependencies needed to access cryptographic functions in the browser.
 
-- `@akord/akord-js ^3.5.0`
-- `@craco/craco ^6.4.5`
-- `react-scripts 4.0.3`
+- @akord/akord-js ^3.5.0
+- @craco/craco ^6.4.5
+- react-scripts 4.0.3
 
 ### LFG
 
 Ok, you're ready, lets go! 🚀
+`;
+
+export default home;

@@ -1,7 +1,8 @@
-import Md from '../md/Md';
+import home from "../md/home.md";
+import ReactMarkdown from "react-markdown";
 
 const Home = () => {
-  return (<Md src={"/md/home.md"} />)
+  return <ReactMarkdown className="md">{home}</ReactMarkdown>;
 };
 
 export default Home;
