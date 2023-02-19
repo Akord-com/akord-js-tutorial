@@ -6,12 +6,8 @@ import { Context } from "../store";
 const LINKS = [
   ["Wallet", "/wallet", "/images/wallet.svg", "/images/wallet-dark.svg"],
   ["Vaults", "/vaults", "/images/vault.svg", "/images/vault-dark.svg"],
-  [
-    "Diary",
-    "/permadiary",
-    "/images/pencil.svg",
-    "/images/pencil-dark.svg",
-  ],
+  // ["Contents", "/vaults", "", ""],
+  ["Diary", "/permadiary", "/images/pencil.svg", "/images/pencil-dark.svg"],
 ];
 
 const Layout = () => {
@@ -98,8 +94,9 @@ const MobileLinks = () => {
           <li className="nav-item " key={i}>
             <Link
               to={l[1]}
-              className={`nav-link ${location.pathname === l[1] ? "active" : ""
-                }`}
+              className={`nav-link ${
+                location.pathname === l[1] ? "active" : ""
+              }`}
             >
               {l[0]}
             </Link>
