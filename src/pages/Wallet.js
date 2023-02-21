@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import useForm from "../useForm";
 import validate from "./LoginValidation";
 import SpinnerButton from "./SpinnerButton";
@@ -40,25 +41,6 @@ const Wallet = (props) => {
     dispatch({ type: "USER_LOGOUT" });
   }
 
-  // useEffect(() => {
-  //   async function getUser() {
-  //     // Update the document title using the browser API
-  //     if (state.current_user) {
-  //       const { jwtToken, wallet } = await Akord.init(
-  //         state.current_user.wallet,
-  //         state.current_user.jwtToken
-  //       );
-
-  //       const user = {
-  //         email: values.email,
-  //         wallet: wallet,
-  //         jwtToken: jwtToken,
-  //       };
-  //     }
-  //   }
-  //   getUser();
-  // }, [state, values]);
-
   return (
     <>
       <ReactMarkdown>{wallet}</ReactMarkdown>
@@ -89,7 +71,11 @@ const Wallet = (props) => {
           <p>
             <button className="btn" onClick={logout}>
               Logout
-            </button>
+            </button>{" "}
+            &nbsp;
+            <Link to={"/vaults"} className="btn">
+              Next, Vaults
+            </Link>
           </p>
         </div>
       )}
@@ -142,6 +128,10 @@ const Wallet = (props) => {
               disabled={!values.password || !values.email}
             />
           </form>
+          <p>
+            If you need an Akord wallet,{" "}
+            <a href="http://v2.akord.com">sign up for a free account</a>.
+          </p>
           <div className="alert-highlight">
             <h3>Attention: You are decrypting your wallet</h3>
             <p>

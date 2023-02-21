@@ -16,7 +16,7 @@ const folders = await akord.folder.listAll(vaultId);
 
 ### Stacks
 
-Stacks are useful contains for files. A stack keeps track of each revision of the file and provides an audit trail of all changes. Stacks can be contained in folders.  Stacks works with [FileLike](https://github.com/Akord-com/akord-js/blob/ab9bb814fa9cf73d9ed01052738c8b84a86040b2/src/types/file.ts#L8) which wraps File or NodeJs.File.
+Stacks are useful contains for files. A stack keeps track of each revision of the file and provides an audit trail of all changes. Stacks can be contained in folders.  Stacks works with [FileLike](https://github.com/Akord-com/akord-js/blob/ab9bb814fa9cf73d9ed01052738c8b84a86040b2/src/types/file.ts#L8) which wraps Web File or NodeJs.File.
 
 '''
 const { stackId } =
@@ -26,14 +26,41 @@ const decryptedFile =
     await akord.stack.getFile(stackId);
 '''
 
-From your stack, you will need to download and decrypt the associated file. For example, below we download the file and display it as an image in the browser.
+Or, if you have existing content on Arweave, you can import it into your vault.
 
 '''
-const { data: file } = await akord.file.get(stack.id);
-const fileUrl = URL.createObjectURL(new Blob([file]));
+const txId = "kzGxbFW_oJ3PyYneRs9cPrChQ-k-8Fym5k9PCZNJ_HA";
+const { stackId } = 
+    await akord.stack.import(vaultId, txId);
+'''
 
+Changes to your file are tracked in the stack.
+
+'''
+const { transactionId } = 
+    await akord.stack.uploadRevision(stackId, file);
+'''
+
+To access the file we need to download and decrypt, if private.  Stacks provide the getVersion() function to help us with that.
+
+'''
+// get the latest file version
+const { name: fileName, data: fileBuffer } = 
+    await akord.stack.getVersion(stackId);
+
+// ... the oldest version
+const { name: fileName, data: fileBuffer } = 
+    await akord.stack.getVersion(stackId, 0);
+'''
+
+If our file was an image, we can display it.
+
+'''
+// display it
+const fileUrl = URL.createObjectURL(new Blob([fileBuffer]));
 <img src={fileUrl} />
 '''
+
 
 ### Notes
 

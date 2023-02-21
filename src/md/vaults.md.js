@@ -3,9 +3,9 @@ import { mdFix } from "./helper.js";
 const vaults_md = mdFix(`
 # Vaults
 
-Akord Protocol stores your data in private or public, permanent, user owned storage units called 'Vaults'.
+Akord Protocol stores your data in [private|public], permanent, user owned storage units called 'Vaults'.
 
-You can create a private vault.
+You can [create a vault using the Akord App](https://v2.akord.com/create-vault) or with code.
 
 '''
 const { vaultId, membershipId } = 

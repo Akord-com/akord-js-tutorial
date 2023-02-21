@@ -47,7 +47,7 @@ const Vaults = (props) => {
       )}
       {state.current_user && (
         <>
-          <p>Try it with your vaults:</p>
+          <p>Here are your vaults:</p>
           <Dropdown
             options={options}
             onChange={onStatusChange}
