@@ -4,9 +4,8 @@ import { useParams } from "react-router-dom";
 import { Akord } from "@akord/akord-js";
 import { useContext } from "react";
 import { Context } from "../store";
-
-// markdown
-import Md from '../md/Md';
+import ReactMarkdown from "react-markdown";
+import vaultview_md from "../md/vaultview.md.js";
 
 const VaultView = (props) => {
   const params = useParams();
@@ -26,24 +25,32 @@ const VaultView = (props) => {
 
         const nodes = [];
 
-        const folders = (
-          await akord.folder.listAll(vaultId)).map((f) => [f.name, f.id, "folder"]
-          )
+        const folders = (await akord.folder.listAll(vaultId)).map((f) => [
+          f.name,
+          f.id,
+          "folder",
+        ]);
         nodes.push(...folders);
 
-        const stacks = (
-          await akord.stack.listAll(vaultId)).map((f) => [f.name, f.id, "stack"]
-          )
+        const stacks = (await akord.stack.listAll(vaultId)).map((f) => [
+          f.name,
+          f.id,
+          "stack",
+        ]);
         nodes.push(...stacks);
 
-        const notes = (
-          await akord.note.listAll(vaultId)).map((f) => [f.name, f.id, "note"]
-          );
+        const notes = (await akord.note.listAll(vaultId)).map((f) => [
+          f.name,
+          f.id,
+          "note",
+        ]);
         nodes.push(...notes);
 
-        const memos = (
-          await akord.memo.listAll(vaultId)).map((f) => [f.name, f.id, "memo"]
-          );
+        const memos = (await akord.memo.listAll(vaultId)).map((f) => [
+          f.name,
+          f.id,
+          "memo",
+        ]);
         nodes.push(...memos);
 
         setNodes(nodes);
@@ -55,15 +62,19 @@ const VaultView = (props) => {
 
   return (
     <>
-      <Md src={"/md/vaultview.md"} />
+      <ReactMarkdown className="md">{vaultview_md}</ReactMarkdown>
       {isLoading && <div className="spinner-border  text-light"></div>}
       {nodes && (
         <div className="">
           <hr></hr>
           <h3>Contents in your vault</h3>
-          <p>Vault Id: <code>{params.vaultId}</code></p>
           <p>
-            <Link className="btn" to={`/gallery/${params.vaultId}`}>Photo Gallery</Link>
+            Vault Id: <code>{params.vaultId}</code>
+          </p>
+          <p>
+            <Link className="btn" to={`/gallery/${params.vaultId}`}>
+              Photo Gallery
+            </Link>
           </p>
           <table className="table table-dark">
             <tbody>

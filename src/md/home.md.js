@@ -1,4 +1,6 @@
-const home = `
+import { mdFix } from "./helper.js";
+
+const home = mdFix(`
 # Building with Akord Vaults
 
 In this working tutorial and demo, we will show how a developer can
@@ -69,6 +71,6 @@ Included in the template are dependencies needed to access cryptographic functio
 ### LFG
 
 Ok, you're ready, lets go! 🚀
-`;
+`);
 
 export default home;

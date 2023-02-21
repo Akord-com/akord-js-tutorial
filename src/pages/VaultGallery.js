@@ -3,9 +3,8 @@ import { useParams } from "react-router-dom";
 import { Akord } from "@akord/akord-js";
 import { useContext } from "react";
 import { Context } from "../store";
-
-// markdown
-import Md from '../md/Md';
+import ReactMarkdown from "react-markdown";
+import vaultgallery_md from "../md/vaultgallery.md.js";
 
 const VaultGallery = (props) => {
   const params = useParams();
@@ -47,7 +46,7 @@ const VaultGallery = (props) => {
 
   return (
     <>
-      <Md src={"/md/vaultgallery.md"} />
+      <ReactMarkdown className="md">{vaultgallery_md}</ReactMarkdown>
       <p>
         {imageUrls.map((url, i) => (
           <img

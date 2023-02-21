@@ -5,9 +5,8 @@ import { useContext } from "react";
 import { Context } from "../store";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
-
-// markdown
-import Md from '../md/Md';
+import ReactMarkdown from "react-markdown";
+import vaults_md from "../md/vaults.md.js";
 
 const Vaults = (props) => {
   const [state] = useContext(Context);
@@ -40,7 +39,7 @@ const Vaults = (props) => {
 
   return (
     <>
-      <Md src={"/md/vaults.md"} />
+      <ReactMarkdown className="md">{vaults_md}</ReactMarkdown>
       {!state.current_user && (
         <p>
           <a href="/wallet">Login with your wallet</a> to view your vaults.
@@ -54,7 +53,7 @@ const Vaults = (props) => {
             onChange={onStatusChange}
             value={defaultOption}
             placeholder="Select an option"
-            className='dropdown'
+            className="dropdown"
           />
 
           <table className="table table-dark">

@@ -1,27 +1,34 @@
+import { mdFix } from "./helper.js";
+
+const vaults_md = mdFix(`
 # Vaults
 
 Akord Protocol stores your data in private or public, permanent, user owned storage units called 'Vaults'.
 
 You can create a private vault.
 
-```
-const {(vaultId, membershipId)} = await akord.vault.create('Personal Diary');
-```
+'''
+const { vaultId, membershipId } = 
+    await akord.vault.create('Personal Diary');
+'''
 
 List your vaults.
 
-```
+'''
 const vaults = await akord.vault.list();
-```
+'''
 
 Sort them by name.
 
-```
+'''
 vaults.sort((a,b) => (a.name >= b.name));
-```
+'''
 
 Filter them by status
 
-```
+'''
 vaults.filter((v) => v.status === 'ACTIVE');
-```
+'''
+`);
+
+export default vaults_md;

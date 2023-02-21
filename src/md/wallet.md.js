@@ -1,4 +1,6 @@
-const wallet = `
+import { mdFix } from "./helper.js";
+
+const wallet = mdFix(`
 # Wallets
 
 Akord Wallets are used to store and access the user's keys across
@@ -14,6 +16,6 @@ const { akord, jwt, wallet } = await Akord.auth.signIn(email, pass);
 // ... or from wallet and jwt
 const akord = Akord.init(wallet, jwt);
 
-`.replace("'''", "```");
+`);
 
 export default wallet;

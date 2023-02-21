@@ -30,7 +30,7 @@ li {
 }
 
 ul {
-  list-style: none;
+  /* list-style: none; */
 }
 
 .lists > li::before {
