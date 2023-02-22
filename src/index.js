@@ -10,6 +10,8 @@ import Vaults from "./pages/Vaults";
 import VaultView from "./pages/VaultView";
 import VaultGallery from "./pages/VaultGallery";
 
+import ScrollToTop from "./helpers/ScrollToTop";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
@@ -18,6 +20,7 @@ export default function App() {
     <Store>
       <div className="container">
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<Home />} />
@@ -31,7 +34,6 @@ export default function App() {
           </Routes>
         </BrowserRouter>
       </div>
-
     </Store>
   );
 }

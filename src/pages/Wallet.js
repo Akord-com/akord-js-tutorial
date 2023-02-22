@@ -73,7 +73,13 @@ const Wallet = (props) => {
               Logout
             </button>{" "}
             &nbsp;
-            <Link to={"/vaults"} className="btn">
+            <Link
+              to={"/vaults"}
+              className="btn"
+              onClick={() => {
+                window.scroll({ top: 0, left: 0, behavior: "smooth" });
+              }}
+            >
               Next, Vaults
             </Link>
           </p>

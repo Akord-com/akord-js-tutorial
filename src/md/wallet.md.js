@@ -1,4 +1,4 @@
-import { mdFix } from "./helper.js";
+import { mdFix } from "../helpers/helper.js";
 
 const wallet = mdFix(`
 # Wallets

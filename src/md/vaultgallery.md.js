@@ -1,14 +1,17 @@
-import { mdFix } from "./helper.js";
+import { mdFix } from "../helpers/helper.js";
 
 const vaultgallery_md = mdFix(`
 
 # Vault Gallery
 
-From your stack, you will need to download and decrypt the associated file. For example, below we download the file and display it as an image in the browser.
+If your vault contains photos, we'll download them here and display them in a gallery.
 
 '''
-const { data: file } = await akord.file.get(stack.id);
-const fileUrl = URL.createObjectURL(new Blob([file]));
+const { data: file } = 
+    await akord.stack.getVersion(stack.id);
+
+const fileUrl = 
+    URL.createObjectURL(new Blob([file]));
 
 <img src={fileUrl} />
 '''

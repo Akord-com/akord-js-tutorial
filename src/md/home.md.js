@@ -1,4 +1,4 @@
-import { mdFix } from "./helper.js";
+import { mdFix } from "../helpers/helper.js";
 
 const home = mdFix(`
 # Building with Akord Vaults
@@ -62,15 +62,18 @@ You can signup and create a wallet and account at [v2.akord.com](http://v2.akord
 
 The quickest way to configure React for AkordJs is to clone the [akordjs-bootstrap](https://github.com/Akord-com/akordjs-bootstrap) template.
 
-Included in the template are dependencies needed to access cryptographic functions in the browser.
+The template is configured for these dependencies:
 
+- Node 16.15.x
 - @akord/akord-js ^3.5.0
 - @craco/craco ^6.4.5
 - react-scripts 4.0.3
 
-### LFG
 
-Ok, you're ready, lets go! 🚀
+With that we're ready to start the demo.
+
+LFG 🚀
+
 `);
 
 export default home;

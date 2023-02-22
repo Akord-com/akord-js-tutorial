@@ -3,7 +3,8 @@ import { Akord } from "@akord/akord-js";
 import { useContext } from "react";
 import { Context } from "../store";
 import useForm from "../useForm";
-// import ReactMarkdown from "react-markdown";
+import ReactMarkdown from "react-markdown";
+import diary_md from "../md/diary.md";
 
 const VAULT_TITLE = "My Vault Diary";
 
@@ -23,28 +24,23 @@ const Dairy = (props) => {
   // async function loadPosts(id) {
   const loadPosts = useCallback(
     async (id) => {
-      console.log("loading posts ...", id);
       setIsLoading(true);
       if (id) {
         const akord = await Akord.init(
           state.current_user.wallet,
           state.current_user.jwtToken
         );
-        const notes = await akord.note.list(id);
 
-        // tesat code
-        // if (notes.length > 0) {
-        //   const n = await akord.note.get(notes[0]);
-        //   console.log(n);
-        // }
-
+        // get list of notes and download the file
+        const notes = await akord.note.listAll(id);
         for (var i in notes) {
-          var note = notes[i];
-          console.log(note);
+          const file = await akord.stack.getVersion(notes[i].id);
+          // decode the file and save the name/content to our posts array
+          var enc = new TextDecoder("utf-8");
+          notes[i].title = file.name;
+          notes[i].content = enc.decode(file.data);
         }
-
         setPosts(notes);
-        console.log(notes);
       }
       setIsLoading(false);
     },
@@ -60,9 +56,9 @@ const Dairy = (props) => {
       );
       // give it a name, sortable by the date it was posted, then title
       const name = `${new Date(Date.now()).toISOString()} ${values.title}`;
-      const note = await akord.note.create(vaultId, name, values.content);
-      console.log(note);
+      const note = await akord.note.create(vaultId, values.content, name);
       setNote(note);
+      await loadPosts(vaultId);
     }
     setIsLoading(false);
   }
@@ -112,42 +108,10 @@ const Dairy = (props) => {
     findDiaryVault();
   }, [state, loadPosts]);
 
-  console.log(posts);
-
   return (
     <>
-      <h1>Diary</h1>
-      <p className="lead">
-        Post and read from your encrypted, user owned vault.
-      </p>
-      <p>
-        For our private perma-diary, we will create a new Akord Vault. Each post
-        in the diary will be stored as a 'Note'. Notes are text files using the
-        markdown format.
-      </p>
-      <pre>
-        {`const { akord } = await Akord.auth.signIn(username, password);`}
-        <br />
-        {`const { vaultId } = await akord.vault.create("Vault Diary");`}
-      </pre>
-      <p>
-        Then we can write some markdown and post it as an entry to the Diary
-      </p>
-      <pre>
-        {`const { akord } = await Akord.auth.signIn(username, password);`}
-        <br />
-        {`const name = nameOfThePost;`}
-        <br />
-        {`const content = '# Hello World, from Akord';`}
-        <br />
-        <br />
-        {`const note = await akord.note.create(vaultId, 'Hello World', content);`}
-      </pre>
-      <p>
-        For your own personal, private and permanent diary, we'll first check
-        for a vault called '{VAULT_TITLE}', create one if not found and post
-        diary entries to it.{" "}
-      </p>
+      <ReactMarkdown>{diary_md}</ReactMarkdown>
+
       {!state.current_user && (
         <p>
           <a href="/wallet">Login with your wallet</a> to access your Vault
@@ -241,7 +205,7 @@ const Dairy = (props) => {
               <div className="card-body">
                 <h4 className="card-title">{p.title}</h4>
                 <p className="card-text">
-                  {/* <ReactMarkdown>{JSON.parse(p.content)}</ReactMarkdown> */}
+                  <ReactMarkdown>{p.content}</ReactMarkdown>
                 </p>
               </div>
             </div>
