@@ -38,13 +38,12 @@ Finally, we can query the vault and download the posts.
 '''
 const notes = await akord.note.listAll(vId);
 for (var i in notes) {
-  // download the file from the stack
-  const file = await akord.stack.getVersion(notes[i].id);
+  // download the file from the note stack
+  const file = await akord.note.getVersion(notes[i].id);
 
-  // decode the file and save the name/content to our posts array
-  var enc = new TextDecoder("utf-8");
-  notes[i].content = file.name;
-  notes[i].title = enc.decode(file.data);
+  // save the name/content to our posts array
+  notes[i].content = file.data;
+  notes[i].title = file.name;
 }
 '''
 

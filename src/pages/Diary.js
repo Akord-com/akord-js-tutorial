@@ -35,10 +35,9 @@ const Dairy = (props) => {
         const notes = await akord.note.listAll(id);
         for (var i in notes) {
           const file = await akord.stack.getVersion(notes[i].id);
-          // decode the file and save the name/content to our posts array
-          var enc = new TextDecoder("utf-8");
+          // save the name/content to our posts array
           notes[i].title = file.name;
-          notes[i].content = enc.decode(file.data);
+          notes[i].content = file.data;
         }
         setPosts(notes);
       }

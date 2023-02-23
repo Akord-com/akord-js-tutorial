@@ -22,8 +22,8 @@ Stacks are useful contains for files. A stack keeps track of each revision of th
 const { stackId } =
     await akord.stack.create(vaultId, file, 'My Logo.png');
 
-const decryptedFile =
-    await akord.stack.getFile(stackId);
+const { data: decryptedFile } =
+    await akord.stack.getVersion(stackId);
 '''
 
 Or, if you have existing content on Arweave, you can import it into your vault.
