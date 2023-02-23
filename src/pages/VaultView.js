@@ -85,7 +85,7 @@ const VaultView = (props) => {
               </tr>
               {nodes.map((n, i) => (
                 <tr key={i} className="smaller">
-                  <td>{n[1].slice(0, 4) + "..." + n[0].slice(-2)}</td>
+                  <td>{n[1] && (n[1].slice(0, 4) + "..." + n[1].slice(-2))}</td>
                   <td>{n[0]}</td>
                   <td>{n[2]}</td>
                 </tr>
