@@ -34,7 +34,7 @@ const Dairy = (props) => {
         // get list of notes and download the file
         const notes = await akord.note.listAll(id);
         for (var i in notes) {
-          const file = await akord.stack.getVersion(notes[i].id);
+          const file = await akord.note.getVersion(notes[i].id);
           // save the name/content to our posts array
           notes[i].title = file.name;
           notes[i].content = file.data;
