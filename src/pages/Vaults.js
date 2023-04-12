@@ -18,11 +18,8 @@ const Vaults = (props) => {
       // Update the document title using the browser API
       if (state.current_user) {
         setIsLoading(true);
-        const akord = await Akord.init(
-          state.current_user.wallet,
-          state.current_user.jwtToken
-        );
-        const vaults = await akord.vault.list();
+        const akord = await Akord.init(state.current_user.wallet);
+        const vaults = await akord.vault.listAll();
         setVaults(vaults);
       }
       setIsLoading(false);

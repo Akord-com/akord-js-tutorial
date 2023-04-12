@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import useForm from "../useForm";
 import validate from "./LoginValidation";
 import SpinnerButton from "./SpinnerButton";
-import { Akord } from "@akord/akord-js";
+import { Auth, Akord } from "@akord/akord-js";
 import { useContext } from "react";
 import { Context } from "../store";
 import ReactMarkdown from "react-markdown";
@@ -22,14 +22,14 @@ const Wallet = (props) => {
 
   async function login() {
     setIsLoading(true);
-    const { jwtToken, wallet } = await Akord.auth.signIn(
+    const { jwt, wallet } = await Auth.signIn(
       values.email,
       values.password
     );
     const user = {
       email: values.email,
       wallet: wallet,
-      jwtToken: jwtToken,
+      jwtToken: jwt,
     };
     setIsLoading(false);
     dispatch({ type: "USER_LOGIN", payload: user });
@@ -94,9 +94,8 @@ const Wallet = (props) => {
               <div className="control">
                 <input
                   autoComplete="off"
-                  className={`form-control transparent-input ${
-                    errors.email && "border-danger"
-                  }`}
+                  className={`form-control transparent-input ${errors.email && "border-danger"
+                    }`}
                   type="email"
                   name="email"
                   onChange={handleChange}
@@ -112,9 +111,8 @@ const Wallet = (props) => {
               <label className="label my-2">Password</label>
               <div className="control">
                 <input
-                  className={`form-control transparent-input ${
-                    errors.password && "border-danger"
-                  }`}
+                  className={`form-control transparent-input ${errors.password && "border-danger"
+                    }`}
                   type="password"
                   name="password"
                   onChange={handleChange}

@@ -12,13 +12,14 @@ The wallet is stored in the user account encrypted. If you loose your password, 
 Read more about encryption at [End to End Encryption](https://docs.akord.com/learn/end-to-end-encryption) in Akord docs.
 
 '''
-import { Akord } from "@akord/akord-js";
+import { Auth, Akord } from "@akord/akord-js";
 
 // from username password
-const { akord, jwt, wallet } = await Akord.auth.signIn(email, pass);
+const { wallet, jwt } = await Auth.signIn(email, password);
+const akord = await Akord.init(wallet);
 
 // ... or from wallet and jwt
-const akord = Akord.init(wallet, jwt);
+const akord = Akord.init(wallet, { authToken: jwt });
 
 `);
 

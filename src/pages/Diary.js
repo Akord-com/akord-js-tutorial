@@ -26,10 +26,7 @@ const Dairy = (props) => {
     async (id) => {
       setIsLoading(true);
       if (id) {
-        const akord = await Akord.init(
-          state.current_user.wallet,
-          state.current_user.jwtToken
-        );
+        const akord = await Akord.init(state.current_user.wallet);
 
         // get list of notes and download the file
         const notes = await akord.note.listAll(id);
@@ -49,10 +46,7 @@ const Dairy = (props) => {
   async function postToDiary() {
     setIsLoading(true);
     if (state.current_user && vaultId) {
-      const akord = await Akord.init(
-        state.current_user.wallet,
-        state.current_user.jwtToken
-      );
+      const akord = await Akord.init(state.current_user.wallet);
       // give it a name, sortable by the date it was posted, then title
       const name = `${new Date(Date.now()).toISOString()} ${values.title}`;
       const note = await akord.note.create(vaultId, values.content, name);
@@ -65,10 +59,7 @@ const Dairy = (props) => {
   const handleCreateVault = async () => {
     setIsLoading(true);
     if (state.current_user) {
-      const akord = await Akord.init(
-        state.current_user.wallet,
-        state.current_user.jwtToken
-      );
+      const akord = await Akord.init(state.current_user.wallet);
       const vault = await akord.vault.create(
         VAULT_TITLE //+ " " + Date.now().toString()
       );
@@ -85,11 +76,8 @@ const Dairy = (props) => {
       // Update the document title using the browser API
       if (state.current_user) {
         setIsLoading(true);
-        const akord = await Akord.init(
-          state.current_user.wallet,
-          state.current_user.jwtToken
-        );
-        const vaults = await akord.vault.list();
+        const akord = await Akord.init(state.current_user.wallet);
+        const vaults = await akord.vault.listAll();
         const vault = vaults.filter((v) => v.name === VAULT_TITLE);
         if (vault.length === 0) {
           setVaultId(null);
