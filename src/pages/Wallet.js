@@ -3,14 +3,12 @@ import { Link } from "react-router-dom";
 import useForm from "../useForm";
 import validate from "./LoginValidation";
 import SpinnerButton from "./SpinnerButton";
-import { Auth, Akord } from "@akord/akord-js";
+import { Auth } from "@akord/akord-js";
 import { useContext } from "react";
 import { Context } from "../store";
 import ReactMarkdown from "react-markdown";
 import wallet from "../md/wallet.md";
 
-const COGNITO_LOCAL_STORAGE =
-  "CognitoIdentityServiceProvider.7u2a1pf5i6shfo7enci6bagk7u.LastAuthUser";
 
 const Wallet = (props) => {
   const [state, dispatch] = useContext(Context);
@@ -36,7 +34,7 @@ const Wallet = (props) => {
   }
 
   async function logout() {
-    localStorage.removeItem(COGNITO_LOCAL_STORAGE);
+    await Auth.signOut()
     setIsLoading(false);
     dispatch({ type: "USER_LOGOUT" });
   }
