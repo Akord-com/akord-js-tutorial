@@ -2,20 +2,20 @@
 # yarn lockfile v1
 
 
-"@akord/akord-auth@0.25.0":
-  version "0.25.0"
-  resolved "https://registry.yarnpkg.com/@akord/akord-auth/-/akord-auth-0.25.0.tgz#54d1e322a65a3483150b643a8315bb6c70eb5656"
-  integrity sha512-T5hj7THoQPKeTT/+MASTqqmZzV5GF+ohiVPL3bDXEAeVMzYt2SvVOQMm2GFB0EAq1KmEWTCXKb0gdu+lyJAloA==
+"@akord/akord-auth@0.25.1":
+  version "0.25.1"
+  resolved "https://registry.yarnpkg.com/@akord/akord-auth/-/akord-auth-0.25.1.tgz#a2b4bed43adc19cbae3f7205479502b2b6a0a59d"
+  integrity sha512-Er70zClP40MsXM8iq0w5uDhenW6HdAixckBPpRCPNln0xo0ptzg3E7/oLZ6iH861khF8e24wdgCsuGq+b/h6UA==
   dependencies:
     "@akord/crypto" "0.10.0"
     amazon-cognito-identity-js "6.1.2"
 
-"@akord/akord-js@4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@akord/akord-js/-/akord-js-4.0.1.tgz#292c5b21dd399b1325c52821a61044d0b52d980d"
-  integrity sha512-eI2ocz6RiamILHxq24vPVEGnApDuZb+7AGvTFXdmP7BLslGRYEtMbjttokhKOiQ6puuH69PxETQ+PdSul26dGQ==
+"@akord/akord-js@4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@akord/akord-js/-/akord-js-4.0.2.tgz#1a33163592ea9c7a57ca987c01303654e05249c5"
+  integrity sha512-5+3PuVchSjhZP7tWk5VmAtAyJa8yRb87LaA4BYPV06FcP56WPcLMKmVQuZCOml5cp1fV0wTh8xrpGBIcPpcnLw==
   dependencies:
-    "@akord/akord-auth" "0.25.0"
+    "@akord/akord-auth" "0.25.1"
     "@akord/crypto" "0.10.6"
     "@akord/ts-cacheable" "1.0.11"
     axios "^0.24.0"
