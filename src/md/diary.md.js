@@ -7,7 +7,7 @@ Post and read from your encrypted, user owned vault.
 In our example, we'll first check for a vault called 'VAULT_TITLE', create one if not found and post diary entries to it.
 
 '''
-const vaults = await akord.vault.list();
+const vaults = await akord.vault.listAll();
 
 const VAULT_TITLE = "My Vault Diary";
 const vault = vaults.filter(

@@ -15,7 +15,7 @@ const { vaultId, membershipId } =
 List your vaults.
 
 '''
-const vaults = await akord.vault.list();
+const vaults = await akord.vault.listAll();
 '''
 
 Sort them by name.

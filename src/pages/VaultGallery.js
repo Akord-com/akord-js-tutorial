@@ -18,10 +18,7 @@ const VaultGallery = (props) => {
 
       if (state.current_user) {
         setIsLoading(true);
-        const akord = await Akord.init(
-          state.current_user.wallet,
-          state.current_user.jwtToken
-        );
+        const akord = await Akord.init(state.current_user.wallet);
         const stacks = await akord.stack.listAll(vaultId);
 
         for (let i in stacks) {
