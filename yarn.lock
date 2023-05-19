@@ -2,27 +2,25 @@
 # yarn lockfile v1
 
 
-"@akord/akord-auth@0.25.1":
-  version "0.25.1"
-  resolved "https://registry.yarnpkg.com/@akord/akord-auth/-/akord-auth-0.25.1.tgz#a2b4bed43adc19cbae3f7205479502b2b6a0a59d"
-  integrity sha512-Er70zClP40MsXM8iq0w5uDhenW6HdAixckBPpRCPNln0xo0ptzg3E7/oLZ6iH861khF8e24wdgCsuGq+b/h6UA==
+"@akord/akord-auth@0.26.0":
+  version "0.26.0"
+  resolved "https://registry.yarnpkg.com/@akord/akord-auth/-/akord-auth-0.26.0.tgz#9c25244f81d9c19f7a4c629f452304a495f184ba"
+  integrity sha512-rBuZfNJZQMWYgno7JkklSFYTs/+bvXjQHAk8oBhpebcn61RR6WNVQpaAnWWTgFoOuX8DwF03srGwGhCWJs2kMw==
   dependencies:
     "@akord/crypto" "0.10.0"
     amazon-cognito-identity-js "6.1.2"
 
-"@akord/akord-js@4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@akord/akord-js/-/akord-js-4.0.2.tgz#1a33163592ea9c7a57ca987c01303654e05249c5"
-  integrity sha512-5+3PuVchSjhZP7tWk5VmAtAyJa8yRb87LaA4BYPV06FcP56WPcLMKmVQuZCOml5cp1fV0wTh8xrpGBIcPpcnLw==
+"@akord/akord-js@4.7.0":
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/@akord/akord-js/-/akord-js-4.7.0.tgz#dce23a16818d21714498eb45b960e4e9e241bfe0"
+  integrity sha512-1PYmvFlKH5hAAwQiOIT1Gb5LKLlN3WNRwa4sAIAFZmB9Nza3//I0ixz55X2/BU4oYX3fTUW65egXLxcSnroGpA==
   dependencies:
-    "@akord/akord-auth" "0.25.1"
-    "@akord/crypto" "0.10.6"
+    "@akord/akord-auth" "0.26.0"
+    "@akord/crypto" "0.11.0"
     "@akord/ts-cacheable" "1.0.11"
     axios "^0.24.0"
-    blueimp-load-image "^5.16.0"
     lodash "^4.17.21"
     mime-types "^2.1.35"
-    pdfjs-dist "^2.16.105"
     rxjs "^7.5.6"
     streamsaver "^2.0.6"
     uuid "^8.3.2"
@@ -51,10 +49,10 @@
     reflect-metadata "^0.1.13"
     tweetnacl "^1.0.3"
 
-"@akord/crypto@0.10.6":
-  version "0.10.6"
-  resolved "https://registry.yarnpkg.com/@akord/crypto/-/crypto-0.10.6.tgz#a331cadec9bee6b5263c61f75e3c74a88a87ba85"
-  integrity sha512-gmySRiefue+jIyJOM/PRPUtXPkusBwvEJh+I3HTXZU6n1ulZQC7fyQeNHb4XltL+H3EanLCGrhMN9j4EatEeVQ==
+"@akord/crypto@0.11.0":
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/@akord/crypto/-/crypto-0.11.0.tgz#267064786e19ef79ac39803ff5debfdc3eb61de0"
+  integrity sha512-s1WoC8Ho/+LNQRA82dXeqf99VJZdmX5OYN6IGj0/NCoREMQsE4Pexrb8IijjxvoX0muPOuEShuae2dhkKnC+xg==
   dependencies:
     "@akord/browser-level" "^1.0.2"
     bip39 "^3.1.0"
@@ -3085,11 +3083,6 @@ bluebird@^3.5.5:
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.2.tgz#9f229c15be272454ffa973ace0dbee79a1b0c36f"
   integrity sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==
 
-blueimp-load-image@^5.16.0:
-  version "5.16.0"
-  resolved "https://registry.yarnpkg.com/blueimp-load-image/-/blueimp-load-image-5.16.0.tgz#16b763f57e6725f8865517bca8eb7c3dc7d41e09"
-  integrity sha512-3DUSVdOtlfNRk7moRZuTwDmA3NnG8KIJuLcq3c0J7/BIr6X3Vb/EpX3kUH1joxUhmoVF4uCpDfz7wHkz8pQajA==
-
 bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.11.9:
   version "4.12.0"
   resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.12.0.tgz#775b3f278efbb9718eec7361f483fb36fbbfea88"
@@ -4502,11 +4495,6 @@ domhandler@^4.0.0, domhandler@^4.2.0, domhandler@^4.3.1:
   integrity sha512-GrwoxYN+uWlzO8uhUXRl0P+kHE4GtVPfYzVLcUxPL7KNdHKj66vvlhiweIHqYYXWlw+T8iLMp42Lm67ghw4WMQ==
   dependencies:
     domelementtype "^2.2.0"
-
-dommatrix@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/dommatrix/-/dommatrix-1.0.3.tgz#e7c18e8d6f3abdd1fef3dd4aa74c4d2e620a0525"
-  integrity sha512-l32Xp/TLgWb8ReqbVJAFIvXmY7go4nTxxlWiAFyhoQw9RKEOHBZNnyGvJWqDVSPmq3Y9HlM4npqF/T6VMOXhww==
 
 domutils@^1.7.0:
   version "1.7.0"
@@ -8795,14 +8783,6 @@ pbkdf2@^3.0.3:
     ripemd160 "^2.0.1"
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
-
-pdfjs-dist@^2.16.105:
-  version "2.16.105"
-  resolved "https://registry.yarnpkg.com/pdfjs-dist/-/pdfjs-dist-2.16.105.tgz#937b9c4a918f03f3979c88209d84c1ce90122c2a"
-  integrity sha512-J4dn41spsAwUxCpEoVf6GVoz908IAA3mYiLmNxg8J9kfRXc2jxpbUepcP0ocp0alVNLFthTAM8DZ1RaHh8sU0A==
-  dependencies:
-    dommatrix "^1.0.3"
-    web-streams-polyfill "^3.2.1"
 
 performance-now@^2.1.0:
   version "2.1.0"
