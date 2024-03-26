@@ -5,10 +5,10 @@ const vaults_md = mdFix(`
 
 Akord Protocol stores your data in [private|public], permanent, user owned storage units called 'Vaults'.
 
-You can [create a vault using the Akord App](https://v2.akord.com/create-vault) or with code.
+You can [create a vault using the Akord App](https://v2.akord.com/create-vault/storage) or with code.
 
 '''
-const { vaultId, membershipId } = 
+const { vaultId } =
     await akord.vault.create('Personal Diary');
 '''
 

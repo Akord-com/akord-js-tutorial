@@ -18,7 +18,7 @@ var vId = null;
 if (vault.length != 0) {
     vId = vault[0].id'
 } else {
-    const { vaultId } = 
+    const { vaultId } =
         await akord.vault.create(VAULT_TITLE);
     vId = vaultId;
 }
