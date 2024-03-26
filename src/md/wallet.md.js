@@ -14,13 +14,8 @@ Read more about encryption at [End to End Encryption](https://docs.akord.com/lea
 '''
 import { Auth, Akord } from "@akord/akord-js";
 
-// from username password
-const { wallet, jwt } = await Auth.signIn(email, password);
+const { wallet } = await Auth.signIn(email, password);
 const akord = await Akord.init(wallet);
-
-// ... or from wallet and jwt
-const akord = Akord.init(wallet, { authToken: jwt });
-
 `);
 
 export default wallet;

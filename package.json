@@ -3,8 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@akord/akord-js": "4.0.2",
-    "@craco/craco": "^6.4.5",
+    "@akord/akord-js": "5.0.3",
     "bootstrap": "^5.2.1",
     "eslint-config-react-app": "^7.0.1",
     "react": "^18.2.0",
@@ -15,9 +14,9 @@
     "react-scripts": "4.0.3"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
+    "start": "[[ \"$(node -v | cut -c 2-)\" < \"17\" ]] && react-scripts start || react-scripts --openssl-legacy-provider start",
+    "build": "[[ \"$(node -v | cut -c 2-)\" < \"17\" ]] && react-scripts build || react-scripts --openssl-legacy-provider build",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "clean": "rm -rf node_modules yarn-error.log yarn.lock"
   },

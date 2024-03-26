@@ -16,12 +16,17 @@ const folders = await akord.folder.listAll(vaultId);
 
 ### Stacks
 
-Stacks are useful contains for files. A stack keeps track of each revision of the file and provides an audit trail of all changes. Stacks can be contained in folders.  Stacks works with [FileLike](https://github.com/Akord-com/akord-js/blob/ab9bb814fa9cf73d9ed01052738c8b84a86040b2/src/types/file.ts#L8) which wraps Web File or NodeJs.File.
+Stacks are useful contains for files. A stack keeps track of each revision of the file and provides an audit trail of all changes. Stacks can be contained in folders.
 
 '''
-const { stackId } =
+const { stackId, uri } =
     await akord.stack.create(vaultId, file, 'My Logo.png');
+'''
 
+Once the transaction is accepted on Arweave network (it takes 5-15 minutes on average),
+you can access your file on ViewBlock by visiting the following URL: https://viewblock.io/arweave/tx/{uri}
+
+'''
 const { data: decryptedFile } =
     await akord.stack.getVersion(stackId);
 '''
@@ -37,7 +42,7 @@ const { stackId } =
 Changes to your file are tracked in the stack.
 
 '''
-const { transactionId } = 
+const { uri } =
     await akord.stack.uploadRevision(stackId, file);
 '''
 

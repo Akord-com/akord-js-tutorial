@@ -2,7 +2,7 @@
 
 A working tutorial on how to access Akord Vaults from within a React app.
 
-Check out the [Online Demo](http://akord-js-tutorial.akord.com).
+Check out the [Online Demo](http://js.akord.com).
 
 In the app you'll learn how to :
 
@@ -12,7 +12,7 @@ In the app you'll learn how to :
 - Access the content in your vaults
 - Build a 'PermaDiary'
 
-More info about the protocol is available on [Akord Docs](https://docs.akord.com/overview/about).
+More info about the protocol is available on [Akord Docs](https://docs.akord.com).
 
 ## Available Scripts
 
